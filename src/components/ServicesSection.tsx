@@ -1,5 +1,5 @@
 import React from 'react';
-import { Store, Building2, ArrowRight } from 'lucide-react';
+import { Store, PackageCheck, ArrowRight } from 'lucide-react';
 import { StoreConfig } from '../types';
 
 interface ServicesSectionProps {
@@ -44,12 +44,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
       actionClass: 'text-[#25D366] hover:text-emerald-300',
     },
     {
-      icon: Building2,
-      title: 'Bulk & Project Supply',
-      desc: 'Furnishing an entire residence, short-let apartment, or office? Speak with our team for bulk pricing and trade orders.',
-      action: 'Request Quote',
+      icon: PackageCheck,
+      title: 'Wholesale & Carton Orders',
+      desc: 'Stocking your shop or buying in bulk? Enjoy discounted distributor pricing on cookware pot sets, heavy-duty blenders, rechargeable fans, and bed linens.',
+      action: 'Ask for Carton Prices',
       href: `https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
-        'Hello Sunrise Legacy Interior, I would like to request a quote for a bulk/fit-out project.'
+        'Hello Sunrise Legacy Interior, I would like to enquire about wholesale and carton pricing for cookware sets, blenders, fans, and home merchandise.'
       )}`,
       external: true,
       boxClass: 'bg-[#16105A] text-[#00D4FF] border-[#00D4FF]/30',
