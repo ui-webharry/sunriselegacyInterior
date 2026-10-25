@@ -1,0 +1,149 @@
+{
+  "categories": [
+    {
+      "category": "Appliances",
+      "usePhotos": false,
+      "photos": [
+        "images/photo-0.jpg",
+        "images/photo-7.jpg",
+        "images/photo-10.jpg"
+      ],
+      "items": [
+        {
+          "name": "Electric Kettle",
+          "description": "Simple, dependable hot water"
+        },
+        {
+          "name": "Blender",
+          "description": "Everyday blending, made easy"
+        },
+        {
+          "name": "Microwave",
+          "description": "Countertop convenience"
+        },
+        {
+          "name": "Rechargeable Hand Fan",
+          "description": "Portable cooling"
+        }
+      ]
+    },
+    {
+      "category": "Kitchen & Dining",
+      "usePhotos": false,
+      "photos": [
+        "images/photo-2.jpg",
+        "images/photo-5.jpg"
+      ],
+      "items": [
+        {
+          "name": "Cooking Pots",
+          "description": "Cookware for family meals"
+        },
+        {
+          "name": "Plates & Ceramic Bowls",
+          "description": "Tableware for every day"
+        },
+        {
+          "name": "Cutlery",
+          "description": "Clean table essentials"
+        },
+        {
+          "name": "Kitchen Sinks",
+          "description": "Ask about sizes and styles"
+        }
+      ]
+    },
+    {
+      "category": "Lighting & Fans",
+      "usePhotos": false,
+      "photos": [
+        "images/photo-9.jpg",
+        "images/photo-1.jpg"
+      ],
+      "items": [
+        {
+          "name": "Chandeliers",
+          "description": "Statement lighting for any room"
+        },
+        {
+          "name": "Ceiling Fans",
+          "description": "Cooling that looks good"
+        },
+        {
+          "name": "Ceiling & Wall Lights",
+          "description": "Different types and styles"
+        }
+      ]
+    },
+    {
+      "category": "Electronics",
+      "usePhotos": false,
+      "photos": [
+        "images/photo-1.jpg",
+        "images/photo-11.jpg"
+      ],
+      "items": [
+        {
+          "name": "Bluetooth Speaker",
+          "description": "Compact wireless sound"
+        },
+        {
+          "name": "Headphones",
+          "description": "Music and calls"
+        },
+        {
+          "name": "Phones",
+          "description": "Everyday connectivity"
+        },
+        {
+          "name": "Chargers & Covers",
+          "description": "Power and protection"
+        }
+      ]
+    },
+    {
+      "category": "Fashion & Footwear",
+      "usePhotos": false,
+      "photos": [
+        "images/photo-3.jpg",
+        "images/photo-4.jpg",
+        "images/photo-6.jpg"
+      ],
+      "items": [
+        {
+          "name": "Polo Shirts",
+          "description": "Easy everyday style"
+        },
+        {
+          "name": "Canvas Shoes",
+          "description": "Classic casual footwear"
+        },
+        {
+          "name": "Crocs",
+          "description": "Comfortable slip-ons"
+        },
+        {
+          "name": "Umbrellas",
+          "description": "For changing weather"
+        }
+      ]
+    },
+    {
+      "category": "Fragrances",
+      "usePhotos": false,
+      "photos": [
+        "images/photo-8.jpg"
+      ],
+      "items": [
+        {
+          "name": "Arabic Perfumes",
+          "description": "Distinctive, elegant scents"
+        },
+        {
+          "name": "Perfumes",
+          "description": "Scents for every day"
+        }
+      ]
+    }
+  ]
+}

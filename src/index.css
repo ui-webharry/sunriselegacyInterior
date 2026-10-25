@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Brand Colors derived directly from Official Logo & Flyer */
+    --brand-bg: #0A072E;             /* Official logo deep midnight navy */
+    --brand-bg-canvas: #070422;      /* Deepest midnight tone */
+    --brand-bg-elevated: #120E48;    /* Elevated surface cards */
+    --brand-bg-subtle: #18135C;      /* Secondary surface */
+    --brand-cyan-electric: #00D4FF;  /* Official logo accent cyan */
+    --brand-cyan-glow: #00F0FF;      /* Luminous logo glow */
+    --brand-blue-royal: #1668FF;     /* Royal blue orbital gradient */
+    --brand-red-accent: #E11D48;     /* Flyer "Items For Sale:" pill */
+    --text-primary: #FFFFFF;         /* Crisp white text for optimal contrast */
+    --text-secondary: #E2E8F0;       /* Cool ice slate */
+    --text-muted: #94A3B8;           /* Muted slate for tags & meta */
+    --border-dark: #241D7A;          /* Refined subtle border on dark */
+    --border-accent: #00D4FF;        /* Cyan accent highlight border */
+  }
+
+  body {
+    background-color: var(--brand-bg);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Refined, tighter tracking & optimized responsive line-height for all headings */
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  h2 {
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  h3 {
+    letter-spacing: -0.028em;
+    line-height: 1.16;
+  }
+
+  h4 {
+    letter-spacing: -0.022em;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      letter-spacing: -0.038em;
+      line-height: 1.08;
+    }
+    h2 {
+      letter-spacing: -0.032em;
+      line-height: 1.12;
+    }
+    h3 {
+      letter-spacing: -0.025em;
+      line-height: 1.16;
+    }
+    h4 {
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+  }
+}
+
+/* Background canvas carrying the logo color with animated cyan/royal blue accent glow */
+.liquid-canvas {
+  position: relative;
+  background-color: #0A072E;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(0, 212, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(22, 104, 255, 0.14) 0%, transparent 45%);
+}
+
+.liquid-canvas::before,
+.liquid-canvas::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  width: 55vmax;
+  height: 55vmax;
+  filter: blur(120px);
+  opacity: 0.35;
+  pointer-events: none;
+  border-radius: 42% 58% 63% 37% / 45% 38% 62% 55%;
+  animation: liquid-drift 32s ease-in-out infinite alternate;
+}
+
+.liquid-canvas::before {
+  top: -15vmax;
+  left: -10vmax;
+  background: radial-gradient(circle at 40% 40%, rgba(0, 212, 255, 0.28), rgba(22, 104, 255, 0.15) 50%, transparent 75%);
+}
+
+.liquid-canvas::after {
+  bottom: -20vmax;
+  right: -15vmax;
+  background: radial-gradient(circle at 50% 50%, rgba(22, 104, 255, 0.3), rgba(0, 212, 255, 0.12) 50%, transparent 75%);
+  animation-delay: -14s;
+}
+
+@keyframes liquid-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(3vmax, 2vmax) rotate(12deg);
+  }
+  100% {
+    transform: translate(-2vmax, 4vmax) rotate(-8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-canvas::before,
+  .liquid-canvas::after {
+    animation: none;
+  }
+}
+
+/* Custom scrollbar in logo color and cyan accent */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #070422;
+}
+::-webkit-scrollbar-thumb {
+  background: #241D7A;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00D4FF;
+}
+
+/* Liquid Glass Elements */
+.liquid-glass-shell {
+  background: linear-gradient(180deg, rgba(10, 7, 46, 0.78) 0%, rgba(14, 10, 60, 0.72) 50%, rgba(7, 4, 34, 0.82) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    0 16px 40px -10px rgba(0, 0, 0, 0.65),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+.liquid-glass-shell-scrolled {
+  background: linear-gradient(180deg, rgba(7, 4, 34, 0.88) 0%, rgba(10, 7, 46, 0.85) 50%, rgba(5, 3, 26, 0.92) 100%);
+  backdrop-filter: blur(30px) saturate(170%);
+  -webkit-backdrop-filter: blur(30px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.22);
+}
+
+@keyframes liquid-glow-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}

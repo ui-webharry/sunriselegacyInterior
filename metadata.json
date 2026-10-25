@@ -1,0 +1,6 @@
+{
+  "name": "Sunrise Legacy Interior",
+  "description": "Curated premium home & lifestyle e-commerce store offering homeware, artisanal kitchenware, Belgian linen bedding, home décor, lighting, fabrics by the meter, and relaxed apparel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
