@@ -440,22 +440,22 @@ export const Header: React.FC<HeaderProps> = ({
               </a>
             </div>
 
-            {/* Mobile Drawer Footer with Direct Concierge Action */}
-            <div className="p-5 bg-gradient-to-t from-[#05031D] via-[#070422] to-transparent border-t border-white/[0.08] space-y-3">
+            {/* Mobile Drawer Footer with Compact WhatsApp Action */}
+            <div className="p-3.5 sm:p-4 bg-gradient-to-t from-[#05031D] via-[#070422] to-transparent border-t border-white/[0.08] space-y-2 text-center">
               <a
                 href={`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
                   'Hello Sunrise Legacy Interior, I am chatting from your mobile site.'
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#38BDF8] text-[#070422] text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_20px_rgba(0,212,255,0.35)] transition-all cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#38BDF8] text-[#070422] text-[11px] font-bold tracking-wider uppercase hover:brightness-110 shadow-sm transition-all cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#070422]" />
-                <span>Chat with WhatsApp Concierge</span>
+                <MessageCircle className="w-3.5 h-3.5 text-[#070422]" />
+                <span>Chat on WhatsApp</span>
               </a>
 
-              <div className="text-center text-[11px] text-[#94A3B8]">
-                <span>Showroom: Greater Path Mall, Dopemu, Lagos</span>
+              <div className="text-[10px] text-[#94A3B8]">
+                <span>Greater Path Mall, Dopemu, Lagos</span>
               </div>
             </div>
           </div>
