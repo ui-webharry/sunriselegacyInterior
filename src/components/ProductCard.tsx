@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Heart, ShoppingBag, Eye, MessageCircle, Check } from 'lucide-react';
+import React from 'react';
+import { Heart, Eye } from 'lucide-react';
 import { Product, StoreConfig } from '../types';
 
 interface ProductCardProps {
@@ -7,7 +7,7 @@ interface ProductCardProps {
   storeConfig: StoreConfig;
   isWishlisted: boolean;
   onToggleWishlist: (productId: string) => void;
-  onAddToCart: (product: Product, quantity?: number, selectedColor?: string, selectedSize?: string) => void;
+  onAddToCart?: (product: Product, quantity?: number, selectedColor?: string, selectedSize?: string) => void;
   onQuickView: (product: Product) => void;
 }
 
@@ -16,23 +16,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   storeConfig,
   isWishlisted,
   onToggleWishlist,
-  onAddToCart,
   onQuickView,
 }) => {
-  const [isAdded, setIsAdded] = useState(false);
-
-  const handleQuickAdd = (e: React.MouseEvent) => {
+  const handleWhatsAppOrder = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const defaultColor = product.colors && product.colors.length > 0 ? product.colors[0].name : undefined;
-    const defaultSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : undefined;
-    onAddToCart(product, 1, defaultColor, defaultSize);
-    setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 1500);
-  };
-
-  const handleWhatsAppAsk = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const message = `Hello Sunrise Legacy, I would like to check availability for: *${product.name}* (Price: ₦${product.price.toLocaleString()}${product.unit ? ` ${product.unit}` : ''}).`;
+    const message = `Hello Sunrise Legacy Interior, I am interested in ordering: *${product.name}* (Price: ₦${product.price.toLocaleString()}${product.unit ? ` ${product.unit}` : ''}).\n\nI want to buy this in bulk or in pieces. Please let me know the availability and wholesale/retail pricing.`;
     window.open(`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -127,38 +115,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </div>
 
-        {/* Action Row */}
-        <div className="pt-2 border-t border-[#1E1868] flex items-center justify-between gap-2">
+        {/* Action Row: Direct WhatsApp Buy (Bulk or in Pieces) */}
+        <div className="pt-2.5 border-t border-white/[0.08]">
           <button
             type="button"
-            onClick={handleQuickAdd}
-            className={`flex-1 py-2 rounded-full text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-              isAdded
-                ? 'bg-[#059669] text-white shadow-xs'
-                : 'bg-[#120E48] text-white hover:bg-[#00D4FF] hover:text-[#070422] border border-[#00D4FF]/40 hover:border-[#00D4FF]'
-            }`}
+            onClick={handleWhatsAppOrder}
+            className="w-full py-2.5 px-3.5 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-[#070422] border border-[#25D366]/40 hover:border-[#25D366] text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_12px_rgba(37,211,102,0.15)] hover:shadow-[0_0_22px_rgba(37,211,102,0.45)] cursor-pointer group/btn active:scale-95"
+            title="Order this product on WhatsApp"
+            aria-label={`Buy ${product.name} on WhatsApp in bulk or in pieces`}
           >
-            {isAdded ? (
-              <>
-                <Check className="w-3.5 h-3.5" />
-                <span>Added</span>
-              </>
-            ) : (
-              <>
-                <ShoppingBag className="w-3.5 h-3.5 text-[#00D4FF]" />
-                <span>Add to Bag</span>
-              </>
-            )}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleWhatsAppAsk}
-            className="p-2 rounded-full border border-[#1E1868] text-[#94A3B8] hover:text-[#00D4FF] hover:border-[#00D4FF] hover:bg-[#120E48] transition-colors cursor-pointer"
-            title="Ask on WhatsApp"
-            aria-label={`Ask about ${product.name} on WhatsApp`}
-          >
-            <MessageCircle className="w-3.5 h-3.5" />
+            <svg
+              className="w-4 h-4 fill-current shrink-0 group-hover/btn:scale-110 transition-transform"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.24 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.1 19.09L7.81 18.92L4.7 19.74L5.53 16.71L5.34 16.41C4.55 15.16 4.13 13.71 4.13 11.91C4.13 7.37 7.83 3.67 12.04 3.67ZM8.73 7.34C8.54 7.34 8.24 7.41 7.99 7.68C7.74 7.95 7.03 8.62 7.03 9.98C7.03 11.34 8.02 12.65 8.16 12.84C8.3 13.03 10.11 15.82 12.87 17.02C13.53 17.31 14.04 17.48 14.44 17.61C15.11 17.82 15.72 17.79 16.2 17.72C16.74 17.64 17.86 17.04 18.09 16.39C18.32 15.74 18.32 15.19 18.25 15.07C18.18 14.95 17.99 14.88 17.71 14.74C17.43 14.6 16.07 13.93 15.81 13.84C15.56 13.75 15.37 13.7 15.18 13.98C14.99 14.25 14.46 14.88 14.3 15.07C14.14 15.25 13.98 15.28 13.7 15.14C13.42 15.0 12.52 14.71 11.46 13.76C10.63 13.02 10.07 12.11 9.91 11.83C9.75 11.55 9.89 11.4 10.03 11.26C10.16 11.14 10.31 10.94 10.45 10.78C10.59 10.62 10.64 10.5 10.73 10.32C10.82 10.14 10.78 9.98 10.71 9.84C10.64 9.7 10.08 8.33 9.85 7.78C9.62 7.24 9.39 7.32 9.22 7.31C9.06 7.3 8.87 7.34 8.73 7.34Z" />
+            </svg>
+            <span>Buy in Bulk or in Pieces</span>
           </button>
         </div>
       </div>

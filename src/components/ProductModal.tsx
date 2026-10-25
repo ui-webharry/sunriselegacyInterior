@@ -66,15 +66,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     const details = [
       `*Product:* ${product.name}`,
       `*Category:* ${product.category}`,
-      `*Quantity:* ${quantity}${product.unit ? ` (${product.unit})` : ''}`,
+      `*Reference Price:* ₦${product.price.toLocaleString()}${product.unit ? ` (${product.unit})` : ''}`,
+      quantity > 1 ? `*Desired Quantity:* ${quantity}` : null,
       selectedColor ? `*Color:* ${selectedColor}` : null,
       selectedSize ? `*Size/Option:* ${selectedSize}` : null,
-      `*Total Estimate:* ₦${(product.price * quantity).toLocaleString()}`,
     ]
       .filter(Boolean)
       .join('\n');
 
-    const message = `Hello Sunrise Legacy Interior, I would like to purchase:\n\n${details}\n\nPlease confirm availability and payment/delivery options.`;
+    const message = `Hello Sunrise Legacy Interior, I am interested in ordering:\n\n${details}\n\nI want to buy this in bulk or in pieces. Please let me know the availability and wholesale/retail pricing.`;
     window.open(`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -273,51 +273,35 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-2.5 mb-6">
+              {/* Action Buttons: Direct WhatsApp Buy (Bulk / Pieces) */}
+              <div className="flex items-center gap-2.5 mb-6">
                 <button
                   type="button"
-                  onClick={handleAddToCart}
-                  className={`w-full py-3.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-md cursor-pointer ${
-                    isAdded
-                      ? 'bg-[#059669] text-white'
-                      : 'bg-[#00D4FF] text-[#070422] hover:bg-[#38BDF8] shadow-[0_0_20px_rgba(0,212,255,0.4)]'
-                  }`}
+                  onClick={handleWhatsAppOrder}
+                  className="flex-1 py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-[#070422] font-bold text-sm flex items-center justify-center gap-2.5 transition-all duration-200 shadow-[0_0_25px_rgba(37,211,102,0.4)] hover:shadow-[0_0_35px_rgba(37,211,102,0.6)] cursor-pointer active:scale-98"
                 >
-                  {isAdded ? (
-                    <>
-                      <Check className="w-4 h-4 text-[#070422] stroke-[2.5]" />
-                      <span>Added to Shopping Bag</span>
-                    </>
-                  ) : (
-                    <>
-                      <ShoppingBag className="w-4 h-4 text-[#070422] stroke-[2.5]" />
-                      <span>Add to Shopping Bag (₦{(product.price * quantity).toLocaleString()})</span>
-                    </>
-                  )}
+                  <svg
+                    className="w-5 h-5 fill-current shrink-0"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.24 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.1 19.09L7.81 18.92L4.7 19.74L5.53 16.71L5.34 16.41C4.55 15.16 4.13 13.71 4.13 11.91C4.13 7.37 7.83 3.67 12.04 3.67ZM8.73 7.34C8.54 7.34 8.24 7.41 7.99 7.68C7.74 7.95 7.03 8.62 7.03 9.98C7.03 11.34 8.02 12.65 8.16 12.84C8.3 13.03 10.11 15.82 12.87 17.02C13.53 17.31 14.04 17.48 14.44 17.61C15.11 17.82 15.72 17.79 16.2 17.72C16.74 17.64 17.86 17.04 18.09 16.39C18.32 15.74 18.32 15.19 18.25 15.07C18.18 14.95 17.99 14.88 17.71 14.74C17.43 14.6 16.07 13.93 15.81 13.84C15.56 13.75 15.37 13.7 15.18 13.98C14.99 14.25 14.46 14.88 14.3 15.07C14.14 15.25 13.98 15.28 13.7 15.14C13.42 15.0 12.52 14.71 11.46 13.76C10.63 13.02 10.07 12.11 9.91 11.83C9.75 11.55 9.89 11.4 10.03 11.26C10.16 11.14 10.31 10.94 10.45 10.78C10.59 10.62 10.64 10.5 10.73 10.32C10.82 10.14 10.78 9.98 10.71 9.84C10.64 9.7 10.08 8.33 9.85 7.78C9.62 7.24 9.39 7.32 9.22 7.31C9.06 7.3 8.87 7.34 8.73 7.34Z" />
+                  </svg>
+                  <span>Buy in Bulk or in Pieces</span>
                 </button>
 
-                <div className="grid grid-cols-4 gap-2">
-                  <button
-                    type="button"
-                    onClick={handleWhatsAppOrder}
-                    className="col-span-3 py-3 rounded-full bg-[#120E48] hover:bg-[#181358] text-white border border-[#00D4FF]/40 hover:border-[#00D4FF] font-semibold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                  >
-                    <MessageCircle className="w-4 h-4 text-[#00D4FF]" />
-                    <span>Enquire / Order on WhatsApp</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => onToggleWishlist(product.id)}
-                    className={`py-3 rounded-full border border-[#1E1868] flex items-center justify-center transition-colors cursor-pointer ${
-                      isWishlisted ? 'bg-[#00D4FF] text-[#070422] shadow-[0_0_10px_rgba(0,212,255,0.4)]' : 'bg-[#120E48] text-[#CBD5E1] hover:text-[#00D4FF]'
-                    }`}
-                    aria-label={isWishlisted ? 'Saved to Wishlist' : 'Save to Wishlist'}
-                  >
-                    <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-current' : ''}`} />
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => onToggleWishlist(product.id)}
+                  className={`p-3.5 rounded-full border border-white/[0.12] hover:border-[#00D4FF] flex items-center justify-center transition-all cursor-pointer ${
+                    isWishlisted ? 'bg-[#00D4FF] text-[#070422] shadow-[0_0_12px_rgba(0,212,255,0.4)]' : 'bg-white/[0.06] text-[#CBD5E1] hover:text-[#00D4FF]'
+                  }`}
+                  aria-label={isWishlisted ? 'Saved to Wishlist' : 'Save to Wishlist'}
+                  title="Save to Wishlist"
+                >
+                  <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-current' : ''}`} />
+                </button>
               </div>
 
               {/* Collapsible Product Details Accordions */}
