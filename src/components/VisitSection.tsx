@@ -94,12 +94,19 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
               </div>
 
               <div className="flex items-start gap-3.5 pt-4 border-t border-[#1E1868]">
-                <div className="w-9 h-9 rounded-xl bg-[#16105A] text-[#00D4FF] border border-[#00D4FF]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
-                  <MessageCircle className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-xl bg-[#25D366]/15 text-[#25D366] border border-[#25D366]/40 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_12px_rgba(37,211,102,0.2)]">
+                  <svg
+                    className="w-4.5 h-4.5 fill-current"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.24 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.1 19.09L7.81 18.92L4.7 19.74L5.53 16.71L5.34 16.41C4.55 15.16 4.13 13.71 4.13 11.91C4.13 7.37 7.83 3.67 12.04 3.67ZM8.73 7.34C8.54 7.34 8.24 7.41 7.99 7.68C7.74 7.95 7.03 8.62 7.03 9.98C7.03 11.34 8.02 12.65 8.16 12.84C8.3 13.03 10.11 15.82 12.87 17.02C13.53 17.31 14.04 17.48 14.44 17.61C15.11 17.82 15.72 17.79 16.2 17.72C16.74 17.64 17.86 17.04 18.09 16.39C18.32 15.74 18.32 15.19 18.25 15.07C18.18 14.95 17.99 14.88 17.71 14.74C17.43 14.6 16.07 13.93 15.81 13.84C15.56 13.75 15.37 13.7 15.18 13.98C14.99 14.25 14.46 14.88 14.3 15.07C14.14 15.25 13.98 15.28 13.7 15.14C13.42 15.0 12.52 14.71 11.46 13.76C10.63 13.02 10.07 12.11 9.91 11.83C9.75 11.55 9.89 11.4 10.03 11.26C10.16 11.14 10.31 10.94 10.45 10.78C10.59 10.62 10.64 10.5 10.73 10.32C10.82 10.14 10.78 9.98 10.71 9.84C10.64 9.7 10.08 8.33 9.85 7.78C9.62 7.24 9.39 7.32 9.22 7.31C9.06 7.3 8.87 7.34 8.73 7.34Z" />
+                  </svg>
                 </div>
                 <div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#38BDF8] block">
-                    WhatsApp Concierge
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#25D366] block">
+                    WhatsApp Orders &amp; Chat
                   </span>
                   <a
                     href={`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
@@ -107,7 +114,7 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs sm:text-sm font-medium text-white hover:text-[#00D4FF] mt-0.5 block transition-colors"
+                    className="text-xs sm:text-sm font-medium text-white hover:text-[#25D366] mt-0.5 block transition-colors"
                   >
                     {storeConfig.whatsappDisplay}
                   </a>
@@ -115,15 +122,23 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
               </div>
             </div>
 
+            {/* Clickable Vibrant WhatsApp Button (Targeted Element) */}
             <a
               href={`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
                 'Hello Sunrise Legacy Interior, I am planning a visit to your showroom.'
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-full bg-[#120E48] text-white font-semibold text-xs uppercase tracking-wider hover:bg-[#181358] border border-[#00D4FF]/50 hover:border-[#00D4FF] transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
+              className="w-full py-4 px-6 rounded-full bg-gradient-to-r from-[#25D366] to-[#20BA59] hover:from-[#20BA59] hover:to-[#1DA851] text-[#070422] font-bold text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2.5 shadow-[0_4px_22px_rgba(37,211,102,0.45)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.65)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer group border border-white/20"
             >
-              <MessageCircle className="w-4 h-4 text-[#00D4FF]" />
+              <svg
+                className="w-5 h-5 fill-current shrink-0 group-hover:scale-110 transition-transform duration-300"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.24 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.1 19.09L7.81 18.92L4.7 19.74L5.53 16.71L5.34 16.41C4.55 15.16 4.13 13.71 4.13 11.91C4.13 7.37 7.83 3.67 12.04 3.67ZM8.73 7.34C8.54 7.34 8.24 7.41 7.99 7.68C7.74 7.95 7.03 8.62 7.03 9.98C7.03 11.34 8.02 12.65 8.16 12.84C8.3 13.03 10.11 15.82 12.87 17.02C13.53 17.31 14.04 17.48 14.44 17.61C15.11 17.82 15.72 17.79 16.2 17.72C16.74 17.64 17.86 17.04 18.09 16.39C18.32 15.74 18.32 15.19 18.25 15.07C18.18 14.95 17.99 14.88 17.71 14.74C17.43 14.6 16.07 13.93 15.81 13.84C15.56 13.75 15.37 13.7 15.18 13.98C14.99 14.25 14.46 14.88 14.3 15.07C14.14 15.25 13.98 15.28 13.7 15.14C13.42 15.0 12.52 14.71 11.46 13.76C10.63 13.02 10.07 12.11 9.91 11.83C9.75 11.55 9.89 11.4 10.03 11.26C10.16 11.14 10.31 10.94 10.45 10.78C10.59 10.62 10.64 10.5 10.73 10.32C10.82 10.14 10.78 9.98 10.71 9.84C10.64 9.7 10.08 8.33 9.85 7.78C9.62 7.24 9.39 7.32 9.22 7.31C9.06 7.3 8.87 7.34 8.73 7.34Z" />
+              </svg>
               <span>Chat with Showroom on WhatsApp</span>
             </a>
           </div>
