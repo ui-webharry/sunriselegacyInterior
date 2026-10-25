@@ -326,68 +326,81 @@ export const Header: React.FC<HeaderProps> = ({
             aria-hidden="true"
           />
 
-          <div className="fixed inset-y-0 left-0 max-w-sm w-full bg-[#0A072E] shadow-2xl flex flex-col z-10 overflow-y-auto border-r border-[#1E1868] animate-in slide-in-from-left duration-300">
-            {/* Drawer Header with Logo Image */}
-            <div className="p-5 flex items-center justify-between border-b border-[#1E1868] bg-[#070422] text-white">
+          <div className="fixed inset-y-0 left-0 max-w-sm w-full bg-gradient-to-b from-[#0A072E]/98 via-[#0E0A3C]/95 to-[#070422]/98 shadow-[25px_0_60px_rgba(0,0,0,0.9),0_0_40px_rgba(0,212,255,0.15)] flex flex-col z-10 overflow-y-auto border-r border-white/[0.1] backdrop-blur-2xl animate-in slide-in-from-left duration-300 ease-out">
+            {/* Drawer Header with Logo Image (CSS selector 2) */}
+            <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/[0.08] bg-gradient-to-r from-[#070422]/95 via-[#0E0A3C]/90 to-[#070422]/95 backdrop-blur-xl relative shadow-[inset_0_-1px_0_rgba(0,212,255,0.15)] text-white">
               <div className="flex items-center gap-3">
                 <img
                   src="/images/Screenshot_20261015-234655.jpg"
                   alt="Sunrise Legacy Interior"
                   referrerPolicy="no-referrer"
-                  className="h-10 w-10 rounded-full object-cover ring-1 ring-[#00D4FF]/40 shadow-xs"
+                  className="h-11 w-11 rounded-full object-cover ring-2 ring-[#00D4FF]/50 shadow-[0_0_16px_rgba(0,212,255,0.35)]"
                   onError={(e) => { e.currentTarget.src = '/images/logo.png'; }}
                 />
                 <div className="flex flex-col">
-                  <span className="text-xs uppercase tracking-[0.18em] text-[#00D4FF] font-bold">
-                    Store Menu
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#00D4FF] font-bold">
+                    Sunrise Legacy
                   </span>
                   <span className="text-[10px] tracking-[0.14em] text-[#94A3B8]">
-                    Dopemu &middot; Lagos
+                    Dopemu Showroom &middot; Lagos
                   </span>
                 </div>
               </div>
+
+              {/* Improved Liquid X Close Button (CSS selector 1) */}
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-white/80 hover:text-white rounded-full hover:bg-white/10"
+                className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/[0.06] hover:bg-[#00D4FF]/20 active:scale-95 border border-white/[0.12] hover:border-[#00D4FF]/60 text-white hover:text-[#00D4FF] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_4px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all duration-300 backdrop-blur-md cursor-pointer group"
                 aria-label="Close navigation"
               >
-                <X className="w-5 h-5 stroke-[1.5]" />
+                {/* Glow Halo behind X on hover */}
+                <div className="absolute inset-0 rounded-full bg-[#00D4FF]/25 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <X className="w-5 h-5 stroke-[2] group-hover:rotate-90 group-hover:scale-110 transition-transform duration-300 relative z-10" />
               </button>
             </div>
 
-            {/* Quick Search */}
-            <div className="p-5 border-b border-[#1E1868] bg-[#0E0A3C]">
+            {/* Quick Search Row (CSS selector 3) */}
+            <div className="p-4 sm:p-5 border-b border-white/[0.08] bg-white/[0.02] backdrop-blur-md">
+              {/* Search Pill Button (CSS selector 4) */}
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   onOpenSearch();
                 }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 bg-[#120E48] border border-[#1E1868] rounded-full text-xs text-[#94A3B8] hover:border-[#00D4FF] hover:text-white transition-colors"
+                className="w-full flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#120E48]/75 via-[#1a1464]/60 to-[#120E48]/75 border border-white/[0.12] hover:border-[#00D4FF]/60 rounded-full text-xs text-[#94A3B8] hover:text-white shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.2),0_4px_16px_rgba(0,0,0,0.25)] hover:shadow-[0_0_20px_rgba(0,212,255,0.3)] transition-all cursor-pointer group"
               >
-                <Search className="w-4 h-4 text-[#00D4FF]" />
-                <span>Search cookware, fans, fabrics...</span>
+                <div className="flex items-center gap-2.5 truncate">
+                  <Search className="w-4 h-4 text-[#00D4FF] shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="truncate">Search cookware, fans, fabrics...</span>
+                </div>
+                <span className="text-[10px] uppercase tracking-wider text-[#00D4FF] bg-[#00D4FF]/15 px-2.5 py-0.5 rounded-full font-semibold border border-[#00D4FF]/40 shadow-[0_0_8px_rgba(0,212,255,0.25)]">
+                  Search
+                </span>
               </button>
             </div>
 
-            {/* Category Navigation Links */}
-            <div className="py-4 px-6 flex-1 space-y-1">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-[#00D4FF] font-bold mb-3">
-                Collections
+            {/* Category Navigation Links Container (CSS selector 5) */}
+            <div className="py-4 px-5 sm:px-6 flex-1 space-y-1.5 overflow-y-auto">
+              {/* Collections Header Tag (CSS selector 6) */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[10px] uppercase tracking-[0.22em] text-[#00D4FF] font-bold mb-3 shadow-[0_0_12px_rgba(0,212,255,0.15)]">
+                <span>Collections</span>
               </div>
 
               {navCategories.map((item) => (
                 <button
                   key={item.cat}
                   onClick={() => handleNavClick(item.cat)}
-                  className="w-full flex items-center justify-between py-2.5 text-sm font-medium text-[#E2E8F0] border-b border-[#1E1868] hover:text-[#00D4FF] text-left transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#E2E8F0] hover:text-white hover:bg-white/[0.07] border border-transparent hover:border-white/[0.1] text-left transition-all duration-200 cursor-pointer group"
                 >
                   <span>{item.label}</span>
-                  <ChevronRight className="w-4 h-4 text-[#00D4FF]" />
+                  <ChevronRight className="w-4 h-4 text-[#00D4FF] group-hover:translate-x-1 transition-transform" />
                 </button>
               ))}
 
-              <div className="pt-6 text-[10px] uppercase tracking-[0.2em] text-[#00D4FF] font-bold mb-3">
-                Showroom &amp; Story
+              <div className="pt-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[10px] uppercase tracking-[0.22em] text-[#00D4FF] font-bold mb-3 shadow-[0_0_12px_rgba(0,212,255,0.15)]">
+                  <span>Showroom &amp; Story</span>
+                </div>
               </div>
 
               <a
@@ -397,7 +410,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                   document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="block py-2 text-sm font-medium text-[#CBD5E1] hover:text-[#00D4FF]"
+                className="block px-3.5 py-2 rounded-xl text-sm font-medium text-[#CBD5E1] hover:text-white hover:bg-white/[0.06] transition-colors"
               >
                 Our Story &amp; Ethos
               </a>
@@ -409,7 +422,7 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                   document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="block py-2 text-sm font-medium text-[#CBD5E1] hover:text-[#00D4FF]"
+                className="block px-3.5 py-2 rounded-xl text-sm font-medium text-[#CBD5E1] hover:text-white hover:bg-white/[0.06] transition-colors"
               >
                 Bespoke Services &amp; Fit-Out
               </a>
@@ -421,21 +434,21 @@ export const Header: React.FC<HeaderProps> = ({
                   setIsMobileMenuOpen(false);
                   document.getElementById('visit')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="block py-2 text-sm font-medium text-[#CBD5E1] hover:text-[#00D4FF]"
+                className="block px-3.5 py-2 rounded-xl text-sm font-medium text-[#CBD5E1] hover:text-white hover:bg-white/[0.06] transition-colors"
               >
                 Visit Dopemu Showroom
               </a>
             </div>
 
             {/* Mobile Drawer Footer with Direct Concierge Action */}
-            <div className="p-6 bg-[#070422] border-t border-[#1E1868] space-y-3">
+            <div className="p-5 bg-gradient-to-t from-[#05031D] via-[#070422] to-transparent border-t border-white/[0.08] space-y-3">
               <a
                 href={`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
                   'Hello Sunrise Legacy Interior, I am chatting from your mobile site.'
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#00D4FF] text-[#070422] text-xs font-bold uppercase tracking-wider hover:bg-[#38BDF8] shadow-xs"
+                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-gradient-to-r from-[#00D4FF] to-[#38BDF8] text-[#070422] text-xs font-bold uppercase tracking-wider hover:brightness-110 shadow-[0_0_20px_rgba(0,212,255,0.35)] transition-all cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#070422]" />
                 <span>Chat with WhatsApp Concierge</span>
