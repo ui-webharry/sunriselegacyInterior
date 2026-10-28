@@ -13,13 +13,13 @@ export const EditorialShowcase: React.FC<EditorialShowcaseProps> = ({ onSelectCa
         {/* Section Heading */}
         <div className="text-center max-w-xl mx-auto mb-12 sm:mb-16">
           <span className="text-[11px] uppercase tracking-[0.22em] text-[#00D4FF] font-bold block mb-2">
-            The Living Journal
+            Everyday Household Essentials
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal tracking-[-0.038em] leading-[1.08] sm:leading-[1.12]">
-            Materials that <span className="italic text-[#00D4FF]">age with grace</span>
+            Built for Real Living in <span className="italic text-[#00D4FF]">Nigerian Homes</span>
           </h2>
           <p className="text-xs sm:text-sm text-[#94A3B8] font-light mt-2">
-            We focus on natural fibers, durable cookware, and ceramics that become richer with daily use.
+            High-torque blenders that handle tough beans and peppers, non-stick granite pots that resist scorching, and rechargeable fans that keep your family cool.
           </p>
         </div>
 

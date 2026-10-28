@@ -40,10 +40,10 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
             Showroom &amp; Enquiry
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal tracking-[-0.038em] leading-[1.08] sm:leading-[1.12]">
-            Visit our showroom, or <span className="italic text-[#00D4FF]">message our concierge.</span>
+            Visit our showroom, or <span className="italic text-[#00D4FF]">connect on WhatsApp.</span>
           </h2>
           <p className="text-xs sm:text-sm text-[#94A3B8] font-light mt-2">
-            Located at Greater Path Mall, Dopemu, Lagos (Shop 21 &amp; 22, Block B, 1st Floor). Touch fabrics, explore appliances &amp; cookware, or receive instant WhatsApp recommendations.
+            Located at Greater Path Mall, Dopemu, Lagos (Shop 21 &amp; 22, Block B, 1st Floor). Inspect fabrics, test appliances &amp; cookware, or get instant assistance on WhatsApp.
           </p>
         </div>
 
@@ -133,7 +133,7 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
               <div>
                 <h3 className="font-serif text-2xl font-normal text-white">Direct Store Enquiry</h3>
                 <p className="text-xs text-[#94A3B8] font-light mt-1">
-                  Leave a note with what you need. We format your inquiry and connect directly to our concierge on WhatsApp.
+                  Leave a note with the items you need. We format your request and connect directly with you on WhatsApp.
                 </p>
               </div>
 

@@ -13,11 +13,11 @@ export const Hero: React.FC<HeroProps> = ({ storeConfig, onExploreClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Hero Showcase with Brand Navy Background & Logo Accent Overlays */}
         <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#0E0A3C] min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] flex items-center shadow-2xl border border-[#1E1868]">
-          {/* Authentic Warm Lifestyle Photography */}
+          {/* Realistic Store Lifestyle Photography featuring chandeliers, ceiling fans, cookware, and appliances */}
           <img
-            src="images/hero_living.jpg"
-            alt="Warm sunlit living space with natural furnishings and home merchandise"
-            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05]"
+            src="images/hero_realistic_home.jpg"
+            alt="Warm modern home interior showcasing crystal chandelier, ceiling fan, granite cookware, and household appliances"
+            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.95] contrast-[1.03]"
             loading="eager"
           />
 

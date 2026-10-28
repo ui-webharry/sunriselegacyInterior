@@ -36,15 +36,27 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
             >
               {/* Image Frame with Logo Accent Overlay & Border */}
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#0E0A3C] mb-3 border border-[#1E1868] group-hover:border-[#00D4FF] transition-all shadow-md group-hover:shadow-[0_0_20px_rgba(0,212,255,0.25)]">
-                <img
-                  src={cat.image}
-                  alt={cat.title}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
+                {cat.video ? (
+                  <video
+                    src={cat.video}
+                    poster={cat.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                ) : (
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                )}
 
                 {/* Subtle logo color gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070422] via-[#070422]/30 to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070422] via-[#070422]/30 to-transparent opacity-60 group-hover:opacity-30 transition-opacity pointer-events-none" />
 
                 {/* Cyan highlight sweep on hover */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(0,212,255,0.2)_0%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />

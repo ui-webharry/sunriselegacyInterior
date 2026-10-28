@@ -87,7 +87,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           </div>
 
           <p className="text-xs sm:text-sm text-[#94A3B8] font-light max-w-sm">
-            Tap any piece to review materials, dimensions, or order directly via our Dopemu showroom concierge.
+            Tap any item to review specifications, or message our Dopemu showroom directly on WhatsApp to buy in bulk or single pieces.
           </p>
         </div>
 

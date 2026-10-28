@@ -1,4 +1,4 @@
-import { Product, StoreConfig } from '../types';
+import { Product, ProductCategory, StoreConfig } from '../types';
 
 export const STORE_CONFIG: StoreConfig = {
   name: 'Sunrise Legacy Interior',
@@ -777,52 +777,62 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const CATEGORIES_METADATA = [
+export interface CategoryMetadataItem {
+  title: string;
+  category: ProductCategory;
+  count: string;
+  image: string;
+  video?: string;
+  description: string;
+}
+
+export const CATEGORIES_METADATA: CategoryMetadataItem[] = [
   {
     title: 'Appliances & Gadgets',
-    category: 'Appliances & Gadgets' as const,
+    category: 'Appliances & Gadgets',
     count: 'Blenders, Kettles, Fans & Microwaves',
     image: 'images/photo-0.jpg',
     description: 'Commercial blenders, electric kettles, microwaves, rechargeable hand fans, speakers & chargers.',
   },
   {
     title: 'Lighting & Ceiling Fans',
-    category: 'Lighting & Fans' as const,
+    category: 'Lighting & Fans',
     count: 'Chandeliers, Fans, POP & Solar',
     image: 'images/photo-9.jpg',
     description: 'Grand crystal chandeliers, retractable chandelier ceiling fans, Bluetooth fans, POP lights & solar lights.',
   },
   {
     title: 'Kitchen & Dining',
-    category: 'Kitchen & Dining' as const,
+    category: 'Kitchen & Dining',
     count: 'Cooking Pots, Plates & Cutlery',
     image: 'images/photo-2.jpg',
     description: 'Non-stick granite cooking pots, plate sets, and stainless steel cutlery sets.',
   },
   {
     title: 'Clothing & Footwear',
-    category: 'Clothing & Footwear' as const,
+    category: 'Clothing & Footwear',
     count: 'Shoes, Crocs, Polos, Jeans & Shirts',
     image: 'images/photo-3.jpg',
     description: 'Canvas shoes, comfort crocs clogs, cotton polo shirts, tailored denim jeans, and casual shirts.',
   },
   {
     title: 'Arabic Perfumes',
-    category: 'Fragrances' as const,
+    category: 'Fragrances',
     count: 'Royal Oud & Concentrated Oils',
     image: 'images/photo-8.jpg',
+    video: '/assets/aistudio/Fragrance_commercial_perfume_pac__d8942945_1080p_41f9d925.mp4',
     description: 'Authentic imported Arabic perfumes, royal oud sprays, and pure concentrated roll-on perfume oils.',
   },
   {
     title: 'Bedding & Bedrooms',
-    category: 'Bedding & Bedrooms' as const,
+    category: 'Bedding & Bedrooms',
     count: 'Luxury Duvets & Sheets',
     image: 'images/cat_bedding.jpg',
     description: 'Belgian washed linen duvet sets, fitted sheets, and soft hotel-grade pillow shams.',
   },
   {
     title: 'Home & Store Utility',
-    category: 'Home Décor & Accents' as const,
+    category: 'Home Décor & Accents',
     count: 'Ladders, Umbrellas & Décor',
     image: 'images/photo-5.jpg',
     description: 'Heavy-duty folding step ladders, windproof storm umbrellas, and home styling accessories.',

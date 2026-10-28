@@ -188,14 +188,14 @@ export default function App() {
         {/* 6. Bespoke Services & Shopping Options */}
         <ServicesSection storeConfig={storeConfig} />
 
-        {/* 7. Showroom Location & Contact Concierge */}
+        {/* 7. Showroom Location & Contact */}
         <VisitSection storeConfig={storeConfig} />
       </main>
 
       {/* Footer */}
       <Footer storeConfig={storeConfig} onSelectCategory={handleCategorySelect} />
 
-      {/* Floating Concierge Action */}
+      {/* Floating Action */}
       <FloatingWhatsApp storeConfig={storeConfig} />
 
       {/* Modals & Slide-Out Drawers */}

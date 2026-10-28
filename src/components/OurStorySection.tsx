@@ -8,7 +8,7 @@ export const OurStorySection: React.FC = () => {
           {/* Left Narrative */}
           <div className="lg:col-span-6">
             <span className="text-[11px] uppercase tracking-[0.24em] text-[#00D4FF] font-bold block mb-2">
-              Our Ethos
+              Who We Are
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal tracking-[-0.038em] leading-[1.08] sm:leading-[1.12] mb-5">
               Your preferred shop for <span className="italic text-[#00D4FF]">household items &amp; general merchandise.</span>
@@ -16,13 +16,13 @@ export const OurStorySection: React.FC = () => {
 
             <div className="space-y-4 text-xs sm:text-sm text-[#CBD5E1] font-light leading-relaxed">
               <p>
-                Sunrise Legacy Interior was established to make household shopping reliable, comprehensive, and effortless.
-                Instead of searching across disjointed markets for cookware, appliances, bed linen, lighting, and textiles,
-                we curate everyday essentials and lifestyle merchandise under one trusted roof.
+                Sunrise Legacy Interior was established to make household shopping in Lagos reliable, comprehensive, and effortless.
+                Instead of searching through crowded open-air markets for cookware, appliances, bed linen, lighting, and textiles,
+                we provide everyday home essentials and general merchandise under one trusted roof at Greater Path Mall, Dopemu.
               </p>
               <p>
-                Every product is inspected for genuine build quality; every kitchen appliance is tested for lasting performance;
-                and our fabrics and lifestyle goods are selected with an eye for durability, comfort, and value.
+                Every pot set is inspected for thickness and non-stick durability; every blender and rechargeable fan is tested for performance;
+                and our duvet sets and lifestyle fabrics are selected to ensure comfort and lasting value.
               </p>
             </div>
 
@@ -37,7 +37,7 @@ export const OurStorySection: React.FC = () => {
               </div>
               <div>
                 <span className="font-serif text-3xl text-white block tabular-nums font-semibold">100%</span>
-                <span className="text-[11px] text-[#00D4FF] font-medium mt-0.5 block">Inspected Quality</span>
+                <span className="text-[11px] text-[#00D4FF] font-medium mt-0.5 block">Tested Before Dispatch</span>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ export const OurStorySection: React.FC = () => {
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-[#070422] border border-[#1E1868] shadow-2xl">
               <img
                 src="images/cat_bedding.jpg"
-                alt="Belgian washed linen duvet and natural oak bed in morning light"
+                alt="Luxury duvet sets, bedding, and home textiles at Sunrise Legacy Interior showroom"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
