@@ -508,7 +508,7 @@ export const PRODUCTS: Product[] = [
     category: 'Clothing',
     price: 12500,
     originalPrice: 15000,
-    image: 'images/cat_clothing.jpg',
+    image: 'images/cat_clothing_poster.jpg',
     secondaryImage: 'images/photo-3.jpg',
     badge: 'Polo Shirt',
     shortDesc: 'Structured 230 GSM combed cotton honeycomb piqué polo with ribbed collar and 2-button placket.',
@@ -878,7 +878,8 @@ export const CATEGORIES_METADATA: CategoryMetadataItem[] = [
     title: 'Clothing & Apparel',
     category: 'Clothing',
     count: 'Polos, Jeans, Shirts & Trousers',
-    image: 'images/cat_clothing.jpg',
+    image: 'images/cat_clothing_poster.jpg',
+    video: '/assets/aistudio/clothing_showcase_video.mp4',
     description: '100% combed cotton polo shirts, tailored stretch denim jeans, casual shirts, and everyday apparel.',
   },
   {
