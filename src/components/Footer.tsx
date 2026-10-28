@@ -252,10 +252,20 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
               <li>
                 <button
                   type="button"
-                  onClick={() => handleCategoryClick('Clothing & Footwear')}
+                  onClick={() => handleCategoryClick('Clothing')}
                   className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
-                  <span>Canvas Shoes, Crocs &amp; Polos</span>
+                  <span>Shirts, Jeans &amp; Polo Apparel</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleCategoryClick('Footwear')}
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                >
+                  <span>Canvas Shoes, Crocs &amp; Slides</span>
                   <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>

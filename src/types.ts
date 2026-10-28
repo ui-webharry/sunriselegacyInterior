@@ -6,6 +6,8 @@ export type ProductCategory =
   | 'Lighting & Fans'
   | 'Home Textiles & Rugs'
   | 'Fabrics & Materials'
+  | 'Clothing'
+  | 'Footwear'
   | 'Clothing & Footwear'
   | 'Appliances & Gadgets'
   | 'Fragrances';
