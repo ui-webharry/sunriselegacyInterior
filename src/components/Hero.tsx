@@ -11,34 +11,34 @@ export const Hero: React.FC<HeroProps> = ({ storeConfig, onExploreClick }) => {
   return (
     <section className="relative overflow-hidden pt-3 pb-8 sm:pt-6 sm:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Hero Showcase with Brand Navy Background & Logo Accent Overlays */}
-        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#0E0A3C] min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] flex items-center shadow-2xl border border-[#1E1868]">
+        {/* Main Hero Showcase with Warm Architectural Image & Measured Luxury Scrim */}
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#241F1A] min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] flex items-center shadow-[0_12px_40px_rgba(45,38,30,0.1)] border border-[#E8E3DA]">
           {/* Realistic Store Lifestyle Photography featuring chandeliers, ceiling fans, cookware, and appliances */}
           <img
             src="images/hero_realistic_home.jpg"
             alt="Warm modern home interior showcasing crystal chandelier, ceiling fan, granite cookware, and household appliances"
-            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.95] contrast-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]"
             loading="eager"
           />
 
-          {/* Logo Accent Color & Logo Background Gradient Overlays */}
-          {/* 1. Left-to-right deep brand navy vignette providing pristine text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070422] via-[#0A072E]/92 to-[#1668FF]/15 sm:w-3/5 lg:w-7/12" />
+          {/* Measured Warm Scrim Overlays for Pristine Legibility */}
+          {/* 1. Left-to-right warm espresso gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1714]/92 via-[#1A1714]/80 to-transparent sm:w-3/5 lg:w-7/12" />
 
-          {/* 2. Logo Accent Colors Ambient Glow: Electric Cyan to Royal Blue Aura */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_35%,_rgba(0,212,255,0.22)_0%,_rgba(22,104,255,0.18)_35%,_transparent_65%)] pointer-events-none" />
+          {/* 2. Warm Amber & Champagne Ambient Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_35%,_rgba(184,134,11,0.16)_0%,_transparent_65%)] pointer-events-none" />
 
           {/* 3. Mobile Gradient to guarantee text clarity on small displays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070422] via-[#0A072E]/85 to-transparent sm:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1714] via-[#1A1714]/85 to-transparent sm:hidden" />
 
           {/* Clean, Welcoming Hero Content */}
           <div className="relative z-10 px-6 sm:px-12 lg:px-16 py-10 sm:py-14 max-w-xl text-left">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-[#00D4FF] font-bold block mb-3 drop-shadow-[0_0_8px_rgba(0,212,255,0.5)]">
+            <span className="text-[11px] uppercase tracking-[0.24em] text-[#E5C282] font-bold block mb-3 drop-shadow-xs">
               Greater Path Mall, Dopemu &middot; Lagos
             </span>
 
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal tracking-[-0.04em] leading-[1.06] sm:leading-[1.08] mb-6 drop-shadow-md">
-              Thoughtful pieces for a <span className="italic text-[#00D4FF]">welcoming home.</span>
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal tracking-[-0.038em] leading-[1.06] sm:leading-[1.08] mb-6 drop-shadow-sm">
+              Thoughtful pieces for a <span className="italic text-[#E5C282]">welcoming home.</span>
             </h1>
 
             {/* Simple, Mature Actions */}
@@ -46,10 +46,10 @@ export const Hero: React.FC<HeroProps> = ({ storeConfig, onExploreClick }) => {
               <button
                 type="button"
                 onClick={onExploreClick}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#00D4FF] text-[#070422] text-xs uppercase tracking-wider font-extrabold hover:bg-[#38BDF8] shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#966B24] hover:bg-[#835C1D] text-white text-xs uppercase tracking-wider font-extrabold shadow-[0_4px_16px_rgba(150,107,36,0.35)] transition-all cursor-pointer active:scale-95"
               >
                 <span>Shop Catalogue</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#070422] stroke-[2.5]" />
+                <ArrowRight className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </button>
 
               <a
@@ -58,7 +58,7 @@ export const Hero: React.FC<HeroProps> = ({ storeConfig, onExploreClick }) => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-[#120E48]/90 via-[#181358]/85 to-[#120E48]/90 hover:from-[#181358] hover:to-[#1e176c] text-white border border-white/[0.12] hover:border-[#25D366]/60 text-xs uppercase tracking-wider font-bold transition-all shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_4px_16px_rgba(0,0,0,0.3)] hover:shadow-[0_0_20px_rgba(37,211,102,0.35)] backdrop-blur-md cursor-pointer group"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/30 text-xs uppercase tracking-wider font-bold transition-all shadow-xs backdrop-blur-md cursor-pointer group active:scale-95"
               >
                 <svg
                   className="w-4.5 h-4.5 fill-[#25D366] shrink-0 group-hover:scale-110 transition-transform"
@@ -73,49 +73,49 @@ export const Hero: React.FC<HeroProps> = ({ storeConfig, onExploreClick }) => {
             </div>
 
             {/* Subtle Reassurance Details */}
-            <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-[11px] text-[#CBD5E1]">
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-[11px] text-[#D8D2C6]">
               <span className="flex items-center gap-1.5 font-medium">
-                <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" />
+                <MapPin className="w-3.5 h-3.5 text-[#E5C282]" />
                 <span>Showroom: Greater Path Mall, Dopemu</span>
               </span>
-              <span className="text-[#64748B]">&middot;</span>
+              <span className="text-white/40">&middot;</span>
               <span className="flex items-center gap-1.5 font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#00D4FF]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#E5C282]" />
                 <span>Nationwide Safe Delivery</span>
               </span>
             </div>
           </div>
         </div>
 
-        {/* 3-Point Store Value Strip below Hero in Brand Navy/Cyan */}
+        {/* 3-Point Store Value Strip below Hero in Warm Off-White Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-4">
-          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:border-[#00D4FF]/40 transition-all flex items-center gap-3.5 text-left shadow-xs">
-            <div className="w-9 h-9 rounded-xl bg-white/[0.06] text-[#00D4FF] flex items-center justify-center shrink-0 border border-white/[0.1] shadow-inner">
-              <BadgeCheck className="w-4.5 h-4.5 text-[#00D4FF]" />
+          <div className="p-4 rounded-2xl bg-white border border-[#E8E3DA] hover:border-[#966B24]/50 transition-all flex items-center gap-3.5 text-left shadow-[0_2px_8px_rgba(45,38,30,0.03)]">
+            <div className="w-9 h-9 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC] shadow-xs">
+              <BadgeCheck className="w-4.5 h-4.5 text-[#966B24]" />
             </div>
             <div>
-              <span className="text-xs font-semibold text-white block">Inspected Quality Stock</span>
-              <span className="text-[11px] text-[#94A3B8] font-light">Cookware, bedding, fabrics, lighting, electronics &amp; apparel</span>
+              <span className="text-xs font-semibold text-[#1A1714] block">Inspected Quality Stock</span>
+              <span className="text-[11px] text-[#786E65] font-light">Cookware, bedding, fabrics, lighting, electronics &amp; apparel</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:border-[#00D4FF]/40 transition-all flex items-center gap-3.5 text-left shadow-xs">
-            <div className="w-9 h-9 rounded-xl bg-white/[0.06] text-[#00D4FF] flex items-center justify-center shrink-0 border border-white/[0.1] shadow-inner">
-              <MapPin className="w-4.5 h-4.5 text-[#00D4FF]" />
+          <div className="p-4 rounded-2xl bg-white border border-[#E8E3DA] hover:border-[#966B24]/50 transition-all flex items-center gap-3.5 text-left shadow-[0_2px_8px_rgba(45,38,30,0.03)]">
+            <div className="w-9 h-9 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC] shadow-xs">
+              <MapPin className="w-4.5 h-4.5 text-[#966B24]" />
             </div>
             <div>
-              <span className="text-xs font-semibold text-white block">Visit Our Showroom</span>
-              <span className="text-[11px] text-[#94A3B8] font-light">Open Monday &ndash; Saturday at Greater Path Mall, Dopemu</span>
+              <span className="text-xs font-semibold text-[#1A1714] block">Visit Our Showroom</span>
+              <span className="text-[11px] text-[#786E65] font-light">Open Monday &ndash; Saturday at Greater Path Mall, Dopemu</span>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08] hover:border-[#00D4FF]/40 transition-all flex items-center gap-3.5 text-left shadow-xs">
-            <div className="w-9 h-9 rounded-xl bg-white/[0.06] text-[#00D4FF] flex items-center justify-center shrink-0 border border-white/[0.1] shadow-inner">
-              <MessageCircle className="w-4.5 h-4.5 text-[#00D4FF]" />
+          <div className="p-4 rounded-2xl bg-white border border-[#E8E3DA] hover:border-[#966B24]/50 transition-all flex items-center gap-3.5 text-left shadow-[0_2px_8px_rgba(45,38,30,0.03)]">
+            <div className="w-9 h-9 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC] shadow-xs">
+              <MessageCircle className="w-4.5 h-4.5 text-[#966B24]" />
             </div>
             <div>
-              <span className="text-xs font-semibold text-white block">WhatsApp Shopping Support</span>
-              <span className="text-[11px] text-[#94A3B8] font-light">Fast check on stock, specifications &amp; same-day dispatch</span>
+              <span className="text-xs font-semibold text-[#1A1714] block">WhatsApp Shopping Support</span>
+              <span className="text-[11px] text-[#786E65] font-light">Fast check on stock, specifications &amp; same-day dispatch</span>
             </div>
           </div>
         </div>

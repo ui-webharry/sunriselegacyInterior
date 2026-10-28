@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Clock, Phone, MessageCircle, Send, Check } from 'lucide-react';
+import { MapPin, Clock, Phone, Send, Check } from 'lucide-react';
 import { StoreConfig } from '../types';
 
 interface VisitSectionProps {
@@ -32,17 +32,17 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
   };
 
   return (
-    <section id="visit" className="py-16 sm:py-20 bg-[#0A072E] border-t border-[#1E1868]">
+    <section id="visit" className="py-16 sm:py-20 bg-[#FAF9F6] border-t border-[#E8E3DA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="max-w-xl mb-10 sm:mb-14">
-          <span className="text-[11px] uppercase tracking-[0.24em] text-[#00D4FF] font-bold block mb-2">
+          <span className="text-[11px] uppercase tracking-[0.24em] text-[#966B24] font-bold block mb-2">
             Showroom &amp; Enquiry
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-white font-normal tracking-[-0.038em] leading-[1.08] sm:leading-[1.12]">
-            Visit our showroom, or <span className="italic text-[#00D4FF]">connect on WhatsApp.</span>
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1714] font-normal tracking-[-0.038em] leading-[1.08] sm:leading-[1.12]">
+            Visit our showroom, or <span className="italic text-[#966B24]">connect on WhatsApp.</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#94A3B8] font-light mt-2">
+          <p className="text-xs sm:text-sm text-[#786E65] font-light mt-2">
             Located at Greater Path Mall, Dopemu, Lagos (Shop 21 &amp; 22, Block B, 1st Floor). Inspect fabrics, test appliances &amp; cookware, or get instant assistance on WhatsApp.
           </p>
         </div>
@@ -51,50 +51,50 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-10">
           {/* Left: Contact Info */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="p-6 sm:p-7 rounded-3xl bg-[#0E0A3C] border border-[#1E1868] space-y-5 shadow-lg">
+            <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E8E3DA] space-y-5 shadow-[0_4px_20px_rgba(45,38,30,0.04)]">
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-[#16105A] text-[#00D4FF] border border-[#00D4FF]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
+                <div className="w-9 h-9 rounded-xl bg-[#F8F7F4] text-[#966B24] border border-[#EBE6DC] flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#38BDF8] block">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#966B24] block">
                     Showroom Address
                   </span>
-                  <p className="text-xs sm:text-sm font-medium text-white mt-0.5">{storeConfig.address}</p>
+                  <p className="text-xs sm:text-sm font-medium text-[#1A1714] mt-0.5">{storeConfig.address}</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 pt-4 border-t border-[#1E1868]">
-                <div className="w-9 h-9 rounded-xl bg-[#16105A] text-[#00D4FF] border border-[#00D4FF]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
+              <div className="flex items-start gap-3.5 pt-4 border-t border-[#E8E3DA]">
+                <div className="w-9 h-9 rounded-xl bg-[#F8F7F4] text-[#966B24] border border-[#EBE6DC] flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#38BDF8] block">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#966B24] block">
                     Opening Hours
                   </span>
-                  <p className="text-xs sm:text-sm font-medium text-white mt-0.5">{storeConfig.hours}</p>
+                  <p className="text-xs sm:text-sm font-medium text-[#1A1714] mt-0.5">{storeConfig.hours}</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 pt-4 border-t border-[#1E1868]">
-                <div className="w-9 h-9 rounded-xl bg-[#16105A] text-[#00D4FF] border border-[#00D4FF]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-inner">
+              <div className="flex items-start gap-3.5 pt-4 border-t border-[#E8E3DA]">
+                <div className="w-9 h-9 rounded-xl bg-[#F8F7F4] text-[#966B24] border border-[#EBE6DC] flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#38BDF8] block">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#966B24] block">
                     Telephone
                   </span>
                   <a
                     href={`tel:${storeConfig.phone.replace(/[^0-9+]/g, '')}`}
-                    className="text-xs sm:text-sm font-medium text-white hover:text-[#00D4FF] mt-0.5 block transition-colors"
+                    className="text-xs sm:text-sm font-medium text-[#1A1714] hover:text-[#966B24] mt-0.5 block transition-colors"
                   >
                     {storeConfig.phone}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 pt-4 border-t border-[#1E1868]">
-                <div className="w-9 h-9 rounded-xl bg-[#25D366]/15 text-[#25D366] border border-[#25D366]/40 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_12px_rgba(37,211,102,0.2)]">
+              <div className="flex items-start gap-3.5 pt-4 border-t border-[#E8E3DA]">
+                <div className="w-9 h-9 rounded-xl bg-[#25D366]/15 text-[#13612D] border border-[#25D366]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                   <svg
                     className="w-4.5 h-4.5 fill-current"
                     viewBox="0 0 24 24"
@@ -105,7 +105,7 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                   </svg>
                 </div>
                 <div>
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#25D366] block">
+                  <span className="text-[10px] font-semibold tracking-wider uppercase text-[#13612D] block">
                     WhatsApp Orders &amp; Chat
                   </span>
                   <a
@@ -114,32 +114,31 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs sm:text-sm font-medium text-white hover:text-[#25D366] mt-0.5 block transition-colors"
+                    className="text-xs sm:text-sm font-medium text-[#1A1714] hover:text-[#13612D] mt-0.5 block transition-colors"
                   >
                     {storeConfig.whatsappDisplay}
                   </a>
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Right: Direct Enquiry Form */}
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
-              className="p-6 sm:p-8 rounded-3xl bg-[#0E0A3C] border border-[#1E1868] shadow-lg space-y-4"
+              className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E3DA] shadow-[0_4px_20px_rgba(45,38,30,0.04)] space-y-4"
             >
               <div>
-                <h3 className="font-serif text-2xl font-normal text-white">Direct Store Enquiry</h3>
-                <p className="text-xs text-[#94A3B8] font-light mt-1">
+                <h3 className="font-serif text-2xl font-normal text-[#1A1714]">Direct Store Enquiry</h3>
+                <p className="text-xs text-[#786E65] font-light mt-1">
                   Leave a note with the items you need. We format your request and connect directly with you on WhatsApp.
                 </p>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#CBD5E1] mb-1.5">
-                  Full Name <span className="text-[#00D4FF]">*</span>
+                <label className="block text-xs font-semibold text-[#574F46] mb-1.5">
+                  Full Name <span className="text-[#966B24]">*</span>
                 </label>
                 <input
                   type="text"
@@ -147,12 +146,12 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Harrison Ifebhor"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1E1868] bg-[#120E48] text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-hidden focus:border-[#00D4FF] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E8E3DA] bg-[#FAF9F6] text-xs sm:text-sm text-[#1A1714] placeholder-[#857A6F] focus:outline-hidden focus:border-[#966B24] focus:bg-white transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#CBD5E1] mb-1.5">
+                <label className="block text-xs font-semibold text-[#574F46] mb-1.5">
                   Item or Category (Optional)
                 </label>
                 <input
@@ -160,12 +159,12 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                   value={productLookingFor}
                   onChange={(e) => setProductLookingFor(e.target.value)}
                   placeholder="e.g. Blender, Electric Kettle, Cookware Set, Bed Linen, Fabric Meterage"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1E1868] bg-[#120E48] text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-hidden focus:border-[#00D4FF] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E8E3DA] bg-[#FAF9F6] text-xs sm:text-sm text-[#1A1714] placeholder-[#857A6F] focus:outline-hidden focus:border-[#966B24] focus:bg-white transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#CBD5E1] mb-1.5">
+                <label className="block text-xs font-semibold text-[#574F46] mb-1.5">
                   Message / Special Request
                 </label>
                 <textarea
@@ -173,16 +172,16 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Ask about dimensions, product specifications, showroom stock, or dispatch..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1E1868] bg-[#120E48] text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-hidden focus:border-[#00D4FF] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#E8E3DA] bg-[#FAF9F6] text-xs sm:text-sm text-[#1A1714] placeholder-[#857A6F] focus:outline-hidden focus:border-[#966B24] focus:bg-white transition-colors"
                 />
               </div>
 
               <button
                 type="submit"
-                className={`w-full py-3.5 rounded-full text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer ${
+                className={`w-full py-3.5 rounded-full text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer active:scale-95 ${
                   submitted
                     ? 'bg-[#059669] text-white'
-                    : 'bg-[#00D4FF] text-[#070422] hover:bg-[#38BDF8] shadow-[0_0_20px_rgba(0,212,255,0.35)]'
+                    : 'bg-[#1A1714] text-white hover:bg-[#2E2822]'
                 }`}
               >
                 {submitted ? (
@@ -192,7 +191,7 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
                   </>
                 ) : (
                   <>
-                    <Send className="w-3.5 h-3.5 text-[#070422] stroke-[2.5]" />
+                    <Send className="w-3.5 h-3.5 text-white stroke-[2.5]" />
                     <span>Send via WhatsApp</span>
                   </>
                 )}
@@ -202,11 +201,11 @@ export const VisitSection: React.FC<VisitSectionProps> = ({ storeConfig }) => {
         </div>
 
         {/* Real Google Map Embed */}
-        <div className="rounded-3xl overflow-hidden border border-[#1E1868] bg-[#0E0A3C] p-2 shadow-lg">
+        <div className="rounded-3xl overflow-hidden border border-[#E8E3DA] bg-white p-2 shadow-[0_4px_20px_rgba(45,38,30,0.04)]">
           <iframe
             src={storeConfig.mapEmbedUrl}
             title="Sunrise Legacy Interior Showroom Location"
-            className="w-full h-72 sm:h-80 rounded-2xl border-0 filter brightness-[0.9] contrast-[1.1]"
+            className="w-full h-72 sm:h-80 rounded-2xl border-0"
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"

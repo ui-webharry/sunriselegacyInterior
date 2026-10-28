@@ -146,7 +146,7 @@ export default function App() {
   };
 
   return (
-    <div className="liquid-canvas min-h-screen flex flex-col">
+    <div className="warm-canvas min-h-screen flex flex-col bg-[#FAF9F6] text-[#1A1714]">
       {/* Global Header */}
       <Header
         storeConfig={storeConfig}

@@ -29,8 +29,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onClick={() => onQuickView(product)}
       className="group cursor-pointer flex flex-col justify-between transition-all"
     >
-      {/* Product Image Frame with Logo Accent Hover Overlay & Border */}
-      <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#0E0A3C] mb-3.5 border border-[#1E1868] group-hover:border-[#00D4FF] transition-all shadow-md group-hover:shadow-[0_0_20px_rgba(0,212,255,0.25)]">
+      {/* Product Image Frame with Warm Ivory Finish & Subtle Shadow */}
+      <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F5F2EB] mb-3.5 border border-[#E8E3DA] group-hover:border-[#966B24]/50 transition-all shadow-[0_2px_10px_rgba(45,38,30,0.03)] group-hover:shadow-[0_8px_25px_rgba(45,38,30,0.07)]">
         <img
           src={product.image}
           alt={product.name}
@@ -38,16 +38,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           loading="lazy"
         />
 
-        {/* Ambient logo color overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070422]/60 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity" />
+        {/* Ambient subtle image gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity" />
 
-        {/* Subtle Top Badge - Crimson from Flyer for Hot Deals, Midnight Navy for Others */}
+        {/* Subtle Top Badge */}
         {product.badge && (
           <span
-            className={`absolute top-2.5 left-2.5 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-md ${
+            className={`absolute top-2.5 left-2.5 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-xs ${
               product.badge.toLowerCase().includes('sale') || product.badge.toLowerCase().includes('popular')
-                ? 'bg-[#E11D48] text-white border border-rose-300/40'
-                : 'bg-[#070422]/95 text-white border border-[#00D4FF]/40'
+                ? 'bg-[#C2410C] text-white'
+                : 'bg-[#1A1714] text-white'
             }`}
           >
             {product.badge}
@@ -63,8 +63,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           }}
           className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
             isWishlisted
-              ? 'bg-[#00D4FF] text-[#070422] shadow-[0_0_10px_rgba(0,212,255,0.5)]'
-              : 'bg-[#070422]/80 backdrop-blur-xs text-[#CBD5E1] hover:text-[#00D4FF] hover:bg-[#070422] border border-[#1E1868]'
+              ? 'bg-[#966B24] text-white shadow-xs'
+              : 'bg-white/90 hover:bg-white text-[#574F46] hover:text-[#966B24] border border-[#E8E3DA] shadow-xs'
           }`}
           aria-label={isWishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
         >
@@ -79,9 +79,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               e.stopPropagation();
               onQuickView(product);
             }}
-            className="w-full py-2 px-3 rounded-full bg-[#070422]/95 text-white text-xs font-semibold hover:bg-[#00D4FF] hover:text-[#070422] shadow-md flex items-center justify-center gap-1.5 transition-all border border-[#00D4FF]/50"
+            className="w-full py-2 px-3 rounded-full bg-white/95 text-[#1A1714] text-xs font-semibold hover:bg-[#1A1714] hover:text-white shadow-md flex items-center justify-center gap-1.5 transition-all border border-[#E8E3DA]"
           >
-            <Eye className="w-3.5 h-3.5 text-[#00D4FF] group-hover:text-[#070422]" />
+            <Eye className="w-3.5 h-3.5 text-[#966B24] group-hover:text-white" />
             <span>Quick View</span>
           </button>
         </div>
@@ -90,25 +90,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {/* Info */}
       <div className="flex-1 flex flex-col justify-between">
         <div>
-          <span className="text-[10px] uppercase tracking-[0.16em] text-[#38BDF8] block mb-1 font-semibold">
+          <span className="text-[10px] uppercase tracking-[0.16em] text-[#966B24] block mb-1 font-semibold">
             {product.category}
           </span>
 
-          <h3 className="font-serif text-lg text-white group-hover:text-[#00D4FF] transition-colors leading-snug line-clamp-1 mb-1 font-medium">
+          <h3 className="font-serif text-lg text-[#1A1714] group-hover:text-[#966B24] transition-colors leading-snug line-clamp-1 mb-1 font-medium">
             {product.name}
           </h3>
 
           <div className="flex items-baseline gap-2 mb-3">
-            <span className="font-sans font-semibold text-sm text-white tabular-nums">
+            <span className="font-sans font-semibold text-sm text-[#1A1714] tabular-nums">
               ₦{product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
-              <span className="text-xs text-slate-500 line-through tabular-nums font-light">
+              <span className="text-xs text-[#857A6F] line-through tabular-nums font-light">
                 ₦{product.originalPrice.toLocaleString()}
               </span>
             )}
             {product.unit && (
-              <span className="text-[11px] text-[#94A3B8] font-light">
+              <span className="text-[11px] text-[#857A6F] font-light">
                 ({product.unit})
               </span>
             )}
@@ -116,11 +116,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Action Row: Direct WhatsApp Buy (Bulk or in Pieces) */}
-        <div className="pt-2.5 border-t border-white/[0.08]">
+        <div className="pt-2.5 border-t border-[#E8E3DA]">
           <button
             type="button"
             onClick={handleWhatsAppOrder}
-            className="w-full py-2.5 px-3.5 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-[#070422] border border-[#25D366]/40 hover:border-[#25D366] text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_12px_rgba(37,211,102,0.15)] hover:shadow-[0_0_22px_rgba(37,211,102,0.45)] cursor-pointer group/btn active:scale-95"
+            className="w-full py-2.5 px-3.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366] text-[#13612D] hover:text-white border border-[#25D366]/30 hover:border-[#25D366] text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 shadow-xs hover:shadow-[0_4px_16px_rgba(37,211,102,0.3)] cursor-pointer group/btn active:scale-95"
             title="Order this product on WhatsApp"
             aria-label={`Buy ${product.name} on WhatsApp in bulk or in pieces`}
           >
