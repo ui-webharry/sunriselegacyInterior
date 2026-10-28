@@ -2,31 +2,31 @@
 
 @layer base {
   :root {
-    /* Sophisticated Warm Off-White / Ivory Palette */
-    --canvas-bg: #FAF9F6;            /* Warm off-white foundational canvas */
-    --canvas-ivory: #F8F7F4;         /* Soft ivory section background */
-    --canvas-linen: #F3EFE8;         /* Light cashmere / linen section */
-    --surface-white: #FFFFFF;        /* Crisp elevated cards & panels */
-    --surface-hover: #F6F3ED;        /* Subtle warm hover surface */
-    --border-light: #E8E3DA;         /* Hairline subtle border */
-    --border-warm: #DCD6CA;          /* Slightly more pronounced warm border */
-    --text-primary: #1A1714;         /* Rich warm espresso / deep charcoal */
-    --text-secondary: #574F46;       /* Warm taupe / secondary text */
-    --text-muted: #857A6F;           /* Refined muted sand / metadata */
-    --accent-gold: #966B24;          /* Warm antique gold / bronze */
-    --accent-gold-light: #B8860B;    /* Luminous gold highlight */
-    --accent-navy: #0F1D38;          /* Refined heritage navy */
-    --accent-green: #25D366;         /* Official WhatsApp emerald */
+    /* Refined Light & Modern Brand Palette */
+    --brand-bg: #F8F9FA;             /* Warm off-white primary canvas */
+    --brand-bg-canvas: #FAFAFA;      /* Soft white alternate */
+    --brand-bg-elevated: #FFFFFF;    /* Pristine white surface cards */
+    --brand-bg-subtle: #F1F5F9;      /* Slate-100 soft background */
+    --brand-blue-primary: #1D4ED8;   /* Royal sapphire blue primary brand accent */
+    --brand-blue-deep: #1E3A8A;      /* Deep navy for brand anchors */
+    --brand-blue-vibrant: #2563EB;   /* Vibrant blue CTA */
+    --brand-blue-accent: #0284C7;    /* Electric cyan/azure accent from logo */
+    --brand-blue-light: #EFF6FF;     /* Muted soft blue container fill */
+    --text-primary: #0F172A;         /* Charcoal dark slate for crystal legibility */
+    --text-secondary: #475569;       /* Slate-600 for supportive body copy */
+    --text-muted: #64748B;           /* Slate-500 for quiet metadata */
+    --border-subtle: #E2E8F0;        /* Slate-200 crisp hairline border */
+    --border-accent: #93C5FD;        /* Blue-300 focus ring & highlight */
   }
 
   body {
-    background-color: var(--canvas-bg);
+    background-color: var(--brand-bg);
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 
-  /* Refined tracking & line-height for luxury editorial serif headings */
+  /* Refined, tighter tracking & optimized responsive line-height for all headings */
   h1, h2, h3, h4, .font-serif {
     font-family: 'Cormorant Garamond', Georgia, serif;
     letter-spacing: -0.03em;
@@ -34,12 +34,12 @@
   }
 
   h1 {
-    letter-spacing: -0.038em;
-    line-height: 1.06;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
   }
 
   h2 {
-    letter-spacing: -0.032em;
+    letter-spacing: -0.03em;
     line-height: 1.1;
   }
 
@@ -55,11 +55,11 @@
 
   @media (max-width: 640px) {
     h1 {
-      letter-spacing: -0.035em;
+      letter-spacing: -0.032em;
       line-height: 1.08;
     }
     h2 {
-      letter-spacing: -0.03em;
+      letter-spacing: -0.028em;
       line-height: 1.12;
     }
     h3 {
@@ -73,57 +73,49 @@
   }
 }
 
-/* Warm Off-White Ambient Canvas */
-.warm-canvas,
+/* Crisp Modern Light Canvas with subtle atmospheric airiness */
 .liquid-canvas {
   position: relative;
-  background-color: #FAF9F6;
+  background-color: #F8F9FA;
   background-image: 
-    radial-gradient(circle at 10% 8%, rgba(243, 239, 232, 0.8) 0%, transparent 45%),
-    radial-gradient(circle at 90% 92%, rgba(239, 234, 224, 0.7) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    radial-gradient(circle at 10% 10%, rgba(2, 132, 199, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%);
 }
 
-/* Custom scrollbar in warm bone and sand tone */
+/* Custom scrollbar for modern light theme */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF9F6;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D2C6;
+  background: #CBD5E1;
   border-radius: 9999px;
-  border: 1px solid #EBE6DC;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B6AC9D;
+  background: #1D4ED8;
 }
 
-/* Warm Frosted Glass Header Shell */
+/* Frosted Modern Light Glass Navigation Shell */
 .liquid-glass-shell {
-  background: rgba(250, 249, 246, 0.86);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(228, 222, 212, 0.9);
-  border-top: 1px solid rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid rgba(218, 212, 202, 0.7);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   box-shadow: 
-    0 10px 25px -5px rgba(45, 38, 30, 0.05),
-    0 2px 6px -1px rgba(45, 38, 30, 0.03),
-    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    0 4px 20px -2px rgba(15, 23, 42, 0.05),
+    0 1px 3px 0 rgba(15, 23, 42, 0.03);
 }
 
 .liquid-glass-shell-scrolled {
-  background: rgba(250, 249, 246, 0.94);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(220, 214, 204, 0.95);
-  border-top: 1px solid rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid rgba(208, 202, 192, 0.8);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(203, 213, 225, 0.95);
   box-shadow: 
-    0 12px 30px -5px rgba(45, 38, 30, 0.08),
-    0 4px 10px -2px rgba(45, 38, 30, 0.04),
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+    0 10px 30px -4px rgba(15, 23, 42, 0.08),
+    0 2px 6px 0 rgba(15, 23, 42, 0.04);
 }

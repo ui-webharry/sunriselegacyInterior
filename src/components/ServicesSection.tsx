@@ -26,9 +26,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
       action: 'Visit Showroom',
       href: '#visit',
       external: false,
-      boxClass: 'bg-[#F8F7F4] text-[#966B24] border-[#EBE6DC]',
-      titleClass: 'group-hover:text-[#966B24]',
-      actionClass: 'text-[#966B24] hover:text-[#835C1D]',
+      boxClass: 'bg-blue-50 text-blue-600 border-blue-200',
+      titleClass: 'group-hover:text-blue-700',
+      actionClass: 'text-blue-600 hover:text-blue-800',
     },
     {
       icon: WhatsAppIcon,
@@ -39,9 +39,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
         'Hello Sunrise Legacy Interior, I would like to place an order or enquire about available stock.'
       )}`,
       external: true,
-      boxClass: 'bg-[#25D366]/15 text-[#13612D] border-[#25D366]/30',
-      titleClass: 'group-hover:text-[#13612D]',
-      actionClass: 'text-[#13612D] hover:text-[#0C471E]',
+      boxClass: 'bg-emerald-50 text-emerald-600 border-emerald-200',
+      titleClass: 'group-hover:text-emerald-700',
+      actionClass: 'text-emerald-600 hover:text-emerald-800',
     },
     {
       icon: PackageCheck,
@@ -52,14 +52,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
         'Hello Sunrise Legacy Interior, I would like to enquire about wholesale and carton pricing for cookware sets, blenders, fans, and home merchandise.'
       )}`,
       external: true,
-      boxClass: 'bg-[#F8F7F4] text-[#966B24] border-[#EBE6DC]',
-      titleClass: 'group-hover:text-[#966B24]',
-      actionClass: 'text-[#966B24] hover:text-[#835C1D]',
+      boxClass: 'bg-blue-50 text-blue-600 border-blue-200',
+      titleClass: 'group-hover:text-blue-700',
+      actionClass: 'text-blue-600 hover:text-blue-800',
     },
   ];
 
   return (
-    <section id="services" className="py-14 sm:py-18 bg-[#F8F7F4] border-t border-[#E8E3DA]">
+    <section id="services" className="py-14 sm:py-18 bg-white border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((srv) => {
@@ -67,7 +67,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
             return (
               <div
                 key={srv.title}
-                className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E8E3DA] flex flex-col justify-between shadow-[0_4px_20px_rgba(45,38,30,0.04)] hover:shadow-[0_12px_32px_rgba(45,38,30,0.07)] hover:border-[#966B24]/50 transition-all group"
+                className="p-6 sm:p-8 rounded-3xl bg-[#F8F9FA] border border-slate-200 flex flex-col justify-between shadow-xs transition-all hover:border-blue-400 hover:bg-white hover:shadow-md group"
               >
                 <div>
                   <div
@@ -76,11 +76,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3
-                    className={`font-serif text-xl text-[#1A1714] font-medium mb-2 transition-colors ${srv.titleClass}`}
+                    className={`font-serif text-xl text-slate-900 font-medium mb-2 transition-colors ${srv.titleClass}`}
                   >
                     {srv.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#574F46] font-light leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed mb-6">
                     {srv.desc}
                   </p>
                 </div>
@@ -89,7 +89,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ storeConfig })
                   href={srv.href}
                   target={srv.external ? '_blank' : undefined}
                   rel={srv.external ? 'noopener noreferrer' : undefined}
-                  className={`text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors self-start cursor-pointer ${srv.actionClass}`}
+                  className={`text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 transition-colors self-start ${srv.actionClass}`}
                 >
                   <span>{srv.action}</span>
                   <ArrowRight className="w-3.5 h-3.5" />

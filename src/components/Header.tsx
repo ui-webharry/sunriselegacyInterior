@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* 
         Sticky Navbar Wrapper:
         - Consistent horizontal padding (px-3 sm:px-6 md:px-8 lg:px-12) guarantees the navbar
-          NEVER touches the edges of the viewport on any screen size.
+          never touches the edges of the viewport on any screen size.
       */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 px-3 sm:px-6 md:px-8 lg:px-12 ${
@@ -100,16 +100,15 @@ export const Header: React.FC<HeaderProps> = ({
         {/* 
           Navbar Container Shell:
           - Centered max-w-5xl capsule on larger screens.
-          - Warm frosted ivory finish that blends with the off-white background.
+          - Clean, luminous light frosted glass background.
         */}
         <div
-          className={`max-w-5xl mx-auto rounded-2xl sm:rounded-full transition-all duration-300 relative overflow-hidden px-3.5 sm:px-5 lg:px-6 py-2 sm:py-2.5 ${
+          className={`max-w-5xl mx-auto rounded-2xl sm:rounded-full transition-all duration-300 relative overflow-hidden px-3 sm:px-5 lg:px-6 py-2 sm:py-2.5 ${
             isScrolled ? 'liquid-glass-shell-scrolled' : 'liquid-glass-shell'
           }`}
         >
-          {/* Subtle Warm Highlight lines */}
+          {/* Subtle Luminous Highlights */}
           <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-          <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#E8E3DA]/60 to-transparent pointer-events-none" />
 
           {/* Single-Row Unified Bar */}
           <div className="relative z-10 flex items-center justify-between gap-2.5 sm:gap-4">
@@ -117,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* LEFT: Brand Logo Emblem & Wordmark */}
             <a
               href="#"
-              className="flex items-center gap-2.5 sm:gap-3 group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24] rounded-full shrink-0"
+              className="flex items-center gap-2.5 sm:gap-3 group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600 rounded-full shrink-0"
               aria-label="Sunrise Legacy Interior Home"
             >
               <div className="relative">
@@ -125,7 +124,7 @@ export const Header: React.FC<HeaderProps> = ({
                   src="/images/Screenshot_20261015-234655.jpg"
                   alt="Sunrise Legacy Interior"
                   referrerPolicy="no-referrer"
-                  className="h-10 w-10 sm:h-11 sm:w-11 rounded-full object-cover ring-2 ring-[#966B24]/30 shadow-[0_2px_8px_rgba(150,107,36,0.18)] group-hover:ring-[#966B24] group-hover:scale-105 transition-all duration-300"
+                  className="h-10 w-10 sm:h-11 sm:w-11 rounded-full object-cover ring-2 ring-blue-500/30 shadow-sm group-hover:ring-blue-600 group-hover:scale-105 transition-all duration-300"
                   onError={(e) => {
                     e.currentTarget.src = '/images/logo.png';
                   }}
@@ -133,28 +132,28 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#25D366] border-2 border-white shadow-xs" title="Showroom Open" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-serif text-sm sm:text-base font-semibold tracking-tight text-[#1A1714] leading-tight group-hover:text-[#966B24] transition-colors">
+                <span className="font-serif text-sm sm:text-base font-semibold tracking-tight text-[#0F172A] leading-tight group-hover:text-blue-700 transition-colors">
                   Sunrise Legacy
                 </span>
-                <span className="text-[9px] sm:text-[10px] tracking-[0.16em] uppercase text-[#966B24] font-semibold leading-none hidden xs:block">
+                <span className="text-[9px] sm:text-[10px] tracking-[0.14em] uppercase text-blue-600 font-bold leading-none hidden xs:block">
                   Interior &middot; Dopemu
                 </span>
               </div>
             </a>
 
-            {/* CENTER: Quick Search Trigger */}
+            {/* CENTER: Quick Search Trigger (Adaptive on Tablet / Laptop / Desktop) */}
             <div className="hidden sm:flex flex-1 max-w-xs md:max-w-sm mx-2">
               <button
                 type="button"
                 onClick={onOpenSearch}
-                className="w-full flex items-center justify-between px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-white border border-[#E8E3DA] hover:border-[#966B24]/40 text-xs text-[#73685E] hover:text-[#1A1714] transition-all cursor-pointer shadow-[0_1px_3px_rgba(35,30,24,0.03)] group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                className="w-full flex items-center justify-between px-3.5 py-1.5 rounded-full bg-slate-100/90 hover:bg-blue-50/80 border border-slate-200 hover:border-blue-300 text-xs text-slate-500 hover:text-slate-800 transition-all cursor-pointer shadow-xs group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                 aria-label="Search catalog"
               >
                 <div className="flex items-center gap-2 truncate">
-                  <Search className="w-3.5 h-3.5 text-[#966B24] shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="truncate text-[11px] lg:text-xs">Search cookware, blenders...</span>
+                  <Search className="w-3.5 h-3.5 text-blue-600 shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="truncate text-[11px] lg:text-xs">Search cookware, blenders, fans...</span>
                 </div>
-                <span className="text-[9px] uppercase tracking-wider text-[#966B24] bg-[#966B24]/10 px-2 py-0.5 rounded-full font-semibold border border-[#966B24]/20 shrink-0">
+                <span className="text-[9px] uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full font-bold border border-blue-200 shrink-0">
                   Search
                 </span>
               </button>
@@ -166,34 +165,35 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={onOpenSearch}
-                className="sm:hidden p-2 text-[#1A1714] hover:text-[#966B24] bg-white/80 hover:bg-white border border-[#E8E3DA] hover:border-[#966B24]/40 rounded-full transition-all cursor-pointer shadow-[0_1px_3px_rgba(35,30,24,0.04)] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                className="sm:hidden p-2 text-slate-700 hover:text-blue-600 bg-slate-100/90 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 rounded-full transition-all cursor-pointer shadow-xs focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                 aria-label="Search catalogue"
               >
-                <Search className="w-4 h-4 stroke-[1.8]" />
+                <Search className="w-4 h-4 stroke-[2]" />
               </button>
 
               {/* Wishlist Button */}
               <button
                 type="button"
                 onClick={onOpenWishlist}
-                className="p-2 sm:p-2.5 rounded-full bg-white/90 hover:bg-white border border-[#E8E3DA] hover:border-[#966B24] text-[#1A1714] hover:text-[#966B24] shadow-[0_1px_4px_rgba(35,30,24,0.05)] hover:shadow-[0_2px_8px_rgba(150,107,36,0.15)] transition-all relative cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                className="p-2 sm:p-2.5 rounded-full bg-slate-100/90 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-700 hover:text-blue-600 shadow-xs hover:shadow-sm transition-all relative cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                 aria-label={`Saved items (${wishlistCount})`}
                 title="Saved Items"
               >
                 <Heart className="w-4 h-4 stroke-[1.8]" />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#966B24] text-white text-[9.5px] font-black rounded-full flex items-center justify-center shadow-xs">
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-blue-600 text-white text-[9.5px] font-black rounded-full flex items-center justify-center shadow-xs">
                     {wishlistCount}
                   </span>
                 )}
               </button>
 
               {/* Subtle Hairline Divider */}
-              <div className="w-[1px] h-5 bg-[#E8E3DA] mx-0.5" />
+              <div className="w-[1px] h-5 bg-slate-200 mx-0.5" />
 
               {/* 
                 THE UNIVERSAL HAMBURGER MENU BUTTON:
-                - Present on ALL screen sizes.
+                - Present on ALL screen sizes (Mobile, Tablet, Laptop, Desktop).
+                - Accessible <button> with proper aria-expanded and aria-label.
               */}
               <button
                 type="button"
@@ -202,10 +202,10 @@ export const Header: React.FC<HeaderProps> = ({
                 aria-expanded={isMenuOpen}
                 aria-controls="main-navigation-drawer"
                 aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-                className={`relative flex items-center justify-center gap-2 h-9 sm:h-10 px-2.5 sm:px-3.5 rounded-full transition-all duration-300 cursor-pointer group active:scale-95 border focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24] ${
+                className={`relative flex items-center justify-center gap-2 h-9 sm:h-10 px-2.5 sm:px-3.5 rounded-full transition-all duration-300 cursor-pointer group active:scale-95 border focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600 ${
                   isMenuOpen
-                    ? 'bg-[#966B24]/10 border-[#966B24] text-[#966B24] shadow-[0_2px_8px_rgba(150,107,36,0.15)]'
-                    : 'bg-white/90 hover:bg-[#F6F3ED] border-[#E8E3DA] hover:border-[#966B24] text-[#1A1714] hover:text-[#966B24] shadow-[0_1px_4px_rgba(35,30,24,0.05)]'
+                    ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
+                    : 'bg-[#0F172A] hover:bg-blue-700 border-[#0F172A] hover:border-blue-700 text-white shadow-xs'
                 }`}
               >
                 {/* 3 Animated Morphing Bars */}
@@ -213,22 +213,22 @@ export const Header: React.FC<HeaderProps> = ({
                   <span
                     className={`h-[2px] rounded-full transition-all duration-300 ease-out origin-center ${
                       isMenuOpen
-                        ? 'w-4.5 sm:w-5 bg-[#966B24] translate-y-[6px] rotate-45'
-                        : 'w-4.5 sm:w-5 bg-[#1A1714] group-hover:bg-[#966B24]'
+                        ? 'w-4.5 sm:w-5 bg-white translate-y-[6px] rotate-45'
+                        : 'w-4.5 sm:w-5 bg-white'
                     }`}
                   />
                   <span
                     className={`h-[2px] rounded-full transition-all duration-200 ease-out ${
                       isMenuOpen
-                        ? 'w-0 opacity-0 bg-[#966B24]'
-                        : 'w-3.5 group-hover:w-4.5 sm:w-4 sm:group-hover:w-5 bg-[#966B24] opacity-100'
+                        ? 'w-0 opacity-0 bg-white'
+                        : 'w-3.5 sm:w-4 bg-blue-300 opacity-100'
                     }`}
                   />
                   <span
                     className={`h-[2px] rounded-full transition-all duration-300 ease-out origin-center ${
                       isMenuOpen
-                        ? 'w-4.5 sm:w-5 bg-[#966B24] -translate-y-[6px] -rotate-45'
-                        : 'w-4.5 sm:w-5 bg-[#1A1714] group-hover:bg-[#966B24]'
+                        ? 'w-4.5 sm:w-5 bg-white -translate-y-[6px] -rotate-45'
+                        : 'w-4.5 sm:w-5 bg-white'
                     }`}
                   />
                 </div>
@@ -245,8 +245,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 
         EXPANDED NAVIGATION PANEL (HAMBURGER DRAWER):
-        - Active on ALL SCREEN SIZES.
-        - Warm off-white / ivory luxury aesthetic.
+        - Clean, modern light theme with blue brand accents
       */}
       {isMenuOpen && (
         <div
@@ -256,34 +255,34 @@ export const Header: React.FC<HeaderProps> = ({
           aria-label="Site Navigation"
           className="fixed inset-0 z-50 overflow-hidden"
         >
-          {/* Backdrop with Subtle Dark Warmth */}
+          {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-[#1A1714]/40 backdrop-blur-xs transition-opacity animate-in fade-in duration-300"
+            className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-300"
             onClick={() => setIsMenuOpen(false)}
             aria-hidden="true"
           />
 
           {/* Slide-out Drawer Panel */}
           <div className="fixed inset-y-0 right-0 max-w-full flex pl-8 sm:pl-12">
-            <div className="w-screen max-w-md bg-[#FAF9F6] shadow-[-20px_0_50px_rgba(28,24,20,0.12)] flex flex-col z-10 overflow-y-auto border-l border-[#E8E3DA] animate-in slide-in-from-right duration-300 ease-out text-[#1A1714]">
+            <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col z-10 overflow-y-auto border-l border-slate-200 animate-in slide-in-from-right duration-300 ease-out text-[#0F172A]">
               
               {/* Drawer Top Header */}
-              <div className="p-4 sm:p-5 flex items-center justify-between border-b border-[#E8E3DA] bg-[#F8F7F4]/95 backdrop-blur-md sticky top-0 z-20">
+              <div className="p-4 sm:p-5 flex items-center justify-between border-b border-slate-100 bg-[#F8F9FA] sticky top-0 z-20">
                 <div className="flex items-center gap-3">
                   <img
                     src="/images/Screenshot_20261015-234655.jpg"
                     alt="Sunrise Legacy Interior"
                     referrerPolicy="no-referrer"
-                    className="h-11 w-11 rounded-full object-cover ring-2 ring-[#966B24]/30 shadow-xs shrink-0"
+                    className="h-11 w-11 rounded-full object-cover ring-2 ring-blue-500/30 shadow-xs shrink-0"
                     onError={(e) => {
                       e.currentTarget.src = '/images/logo.png';
                     }}
                   />
                   <div className="flex flex-col text-left">
-                    <span className="font-serif text-lg font-semibold tracking-tight text-[#1A1714] leading-tight">
+                    <span className="font-serif text-lg font-semibold tracking-tight text-[#0F172A] leading-tight">
                       Sunrise Legacy
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.16em] text-[#966B24] font-bold">
+                    <span className="text-[10px] uppercase tracking-[0.16em] text-blue-600 font-bold">
                       Greater Path Mall, Dopemu
                     </span>
                   </div>
@@ -293,28 +292,28 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsMenuOpen(false)}
-                  className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white hover:bg-[#F2EFEB] active:scale-95 border border-[#E8E3DA] hover:border-[#966B24]/50 text-[#1A1714] hover:text-[#966B24] shadow-xs transition-all duration-300 cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 hover:bg-blue-50 active:scale-95 border border-slate-200 hover:border-blue-300 text-slate-700 hover:text-blue-600 transition-all duration-200 cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                   aria-label="Close navigation menu"
                 >
-                  <X className="w-5 h-5 stroke-[2] group-hover:rotate-90 group-hover:scale-110 transition-transform duration-300" />
+                  <X className="w-5 h-5 stroke-[2] group-hover:rotate-90 transition-transform duration-200" />
                 </button>
               </div>
 
               {/* Quick Search Bar within Drawer */}
-              <div className="p-4 sm:p-5 border-b border-[#E8E3DA] bg-[#F4F1EA]/50">
+              <div className="p-4 sm:p-5 border-b border-slate-100 bg-white">
                 <button
                   type="button"
                   onClick={() => {
                     setIsMenuOpen(false);
                     onOpenSearch();
                   }}
-                  className="w-full flex items-center justify-between px-4 py-3 bg-white hover:bg-[#FAF9F6] border border-[#E8E3DA] hover:border-[#966B24]/50 rounded-full text-xs text-[#73685E] hover:text-[#1A1714] shadow-xs transition-all cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                  className="w-full flex items-center justify-between px-4 py-2.5 bg-slate-50 hover:bg-blue-50/80 border border-slate-200 hover:border-blue-300 rounded-full text-xs text-slate-600 hover:text-slate-900 transition-all cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                 >
                   <div className="flex items-center gap-2.5 truncate">
-                    <Search className="w-4 h-4 text-[#966B24] shrink-0 group-hover:scale-110 transition-transform" />
+                    <Search className="w-4 h-4 text-blue-600 shrink-0 group-hover:scale-110 transition-transform" />
                     <span className="truncate">Search cookware, blenders, fans...</span>
                   </div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#966B24] bg-[#966B24]/10 px-2.5 py-0.5 rounded-full font-semibold border border-[#966B24]/20 shrink-0">
+                  <span className="text-[10px] uppercase tracking-wider text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-full font-bold border border-blue-200 shrink-0">
                     Search
                   </span>
                 </button>
@@ -325,40 +324,40 @@ export const Header: React.FC<HeaderProps> = ({
                 {/* 1. Collections Category Links */}
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#966B24]/10 border border-[#966B24]/25 text-[10px] uppercase tracking-[0.2em] text-[#966B24] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[10px] uppercase tracking-[0.2em] text-blue-700 font-bold">
                       Shop By Category
                     </span>
-                    <span className="text-[11px] text-[#857A6F] font-light">
+                    <span className="text-[11px] text-slate-500 font-normal">
                       Wholesale &amp; Retail
                     </span>
                   </div>
 
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     {navCategories.map((item) => (
                       <button
                         key={item.cat}
                         type="button"
                         onClick={() => handleNavClick(item.cat)}
-                        className="w-full flex items-center justify-between p-3 rounded-2xl text-left bg-white hover:bg-[#F4F1EA] border border-[#EFECE6] hover:border-[#DCD6CA] transition-all group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24] shadow-xs"
+                        className="w-full flex items-center justify-between p-3 rounded-2xl text-left hover:bg-blue-50/80 border border-transparent hover:border-blue-100 transition-all group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                       >
                         <div className="min-w-0 pr-2">
-                          <div className="text-sm font-semibold text-[#1A1714] group-hover:text-[#966B24] transition-colors">
+                          <div className="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">
                             {item.label}
                           </div>
-                          <div className="text-[11px] text-[#857A6F] font-light truncate">
+                          <div className="text-[11px] text-slate-500 font-normal truncate">
                             {item.desc}
                           </div>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-[#966B24] shrink-0 group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 group-hover:translate-x-1 transition-transform" />
                       </button>
                     ))}
                   </div>
                 </div>
 
                 {/* 2. Showroom & Story Pages */}
-                <div className="pt-2 border-t border-[#E8E3DA]">
+                <div className="pt-2 border-t border-slate-100">
                   <div className="mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#966B24]/10 border border-[#966B24]/25 text-[10px] uppercase tracking-[0.2em] text-[#966B24] font-bold">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[10px] uppercase tracking-[0.2em] text-slate-700 font-bold">
                       Showroom &amp; Services
                     </span>
                   </div>
@@ -367,49 +366,49 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       type="button"
                       onClick={() => handleSectionClick('about')}
-                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-[#574F46] hover:text-[#1A1714] hover:bg-[#F2EFEB] text-left transition-colors cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 text-left transition-colors cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                     >
                       <span>Our Story &amp; Quality Standards</span>
-                      <ChevronRight className="w-3.5 h-3.5 text-[#857A6F] group-hover:text-[#966B24] group-hover:translate-x-0.5 transition-all" />
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
                     </button>
 
                     <button
                       type="button"
                       onClick={() => handleSectionClick('services')}
-                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-[#574F46] hover:text-[#1A1714] hover:bg-[#F2EFEB] text-left transition-colors cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 text-left transition-colors cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                     >
                       <span>Wholesale, Carton &amp; Dispatch Services</span>
-                      <ChevronRight className="w-3.5 h-3.5 text-[#857A6F] group-hover:text-[#966B24] group-hover:translate-x-0.5 transition-all" />
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
                     </button>
 
                     <button
                       type="button"
                       onClick={() => handleSectionClick('visit')}
-                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-[#574F46] hover:text-[#1A1714] hover:bg-[#F2EFEB] text-left transition-colors cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#966B24]"
+                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-700 hover:text-blue-700 hover:bg-blue-50/70 text-left transition-colors cursor-pointer group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-600"
                     >
-                      <span>Visit Showroom &amp; Google Map</span>
-                      <ChevronRight className="w-3.5 h-3.5 text-[#857A6F] group-hover:text-[#966B24] group-hover:translate-x-0.5 transition-all" />
+                      <span>Visit Showroom &amp; Store Location</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
                     </button>
                   </div>
                 </div>
 
                 {/* 3. Showroom Verification Details */}
-                <div className="p-4 rounded-2xl bg-[#F4F1EA] border border-[#E8E3DA] space-y-2.5 text-xs text-[#574F46]">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5 text-xs text-slate-700">
                   <div className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[#966B24] shrink-0 mt-0.5" />
+                    <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                     <span className="leading-relaxed">
                       {storeConfig.address}
                     </span>
                   </div>
                   <div className="flex items-center gap-2.5">
-                    <Clock className="w-4 h-4 text-[#966B24] shrink-0" />
+                    <Clock className="w-4 h-4 text-blue-600 shrink-0" />
                     <span>{storeConfig.hours}</span>
                   </div>
                   <div className="flex items-center gap-2.5">
-                    <Phone className="w-4 h-4 text-[#966B24] shrink-0" />
+                    <Phone className="w-4 h-4 text-blue-600 shrink-0" />
                     <a
                       href={`tel:${storeConfig.phone.replace(/[^0-9+]/g, '')}`}
-                      className="hover:text-[#966B24] transition-colors text-[#1A1714] font-medium"
+                      className="hover:text-blue-700 transition-colors text-slate-900 font-semibold"
                     >
                       {storeConfig.phone}
                     </a>
@@ -418,14 +417,14 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
 
               {/* Drawer Bottom Action: WhatsApp Orders */}
-              <div className="p-4 sm:p-5 bg-gradient-to-t from-[#F4F1EA] via-[#FAF9F6] to-transparent border-t border-[#E8E3DA] space-y-2 text-center sticky bottom-0 z-20">
+              <div className="p-4 sm:p-5 bg-[#F8F9FA] border-t border-slate-200 space-y-2 text-center sticky bottom-0 z-20">
                 <a
                   href={`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(
                     'Hello Sunrise Legacy Interior, I am chatting from your store menu.'
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider shadow-[0_2px_12px_rgba(37,211,102,0.25)] transition-all cursor-pointer active:scale-98"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all cursor-pointer active:scale-98"
                 >
                   <svg
                     className="w-4.5 h-4.5 fill-current shrink-0"

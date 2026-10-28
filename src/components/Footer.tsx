@@ -27,7 +27,6 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
     e.preventDefault();
     if (newsletterInput.trim()) {
       setSubscribed(true);
-      // Format a direct WhatsApp VIP subscription
       const message = `Hello Sunrise Legacy Interior,\n\nI would like to subscribe to your new stock alerts, special prices, and showroom discounts.\n\nMy Contact: ${newsletterInput.trim()}`;
       window.open(
         `https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(message)}`,
@@ -55,54 +54,54 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F3EFE8] text-[#1A1714] border-t border-[#E8E3DA] relative overflow-hidden">
+    <footer className="bg-white text-slate-700 border-t border-slate-200 relative overflow-hidden">
       {/* Trust & Guarantee Banner */}
-      <div className="border-b border-[#E8E3DA] bg-[#FAF9F6]">
+      <div className="border-b border-slate-200 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-7">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-[#E8E3DA] shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC]">
-                <MapPin className="w-5 h-5 text-[#966B24]" />
+            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+                <MapPin className="w-5 h-5 text-blue-600" />
               </div>
               <div className="min-w-0">
-                <span className="text-xs font-bold text-[#1A1714] block truncate">Walk-In Showroom</span>
-                <span className="text-[11px] text-[#786E65] font-light block truncate">
+                <span className="text-xs font-bold text-slate-900 block truncate">Walk-In Showroom</span>
+                <span className="text-[11px] text-slate-500 font-normal block truncate">
                   Greater Path Mall, Dopemu
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-[#E8E3DA] shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC]">
-                <Truck className="w-5 h-5 text-[#966B24]" />
+            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+                <Truck className="w-5 h-5 text-blue-600" />
               </div>
               <div className="min-w-0">
-                <span className="text-xs font-bold text-[#1A1714] block truncate">Prompt Lagos Dispatch</span>
-                <span className="text-[11px] text-[#786E65] font-light block truncate">
+                <span className="text-xs font-bold text-slate-900 block truncate">Prompt Lagos Dispatch</span>
+                <span className="text-[11px] text-slate-500 font-normal block truncate">
                   Same-day &amp; interstate courier
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-[#E8E3DA] shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC]">
-                <ShieldCheck className="w-5 h-5 text-[#966B24]" />
+            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+                <ShieldCheck className="w-5 h-5 text-blue-600" />
               </div>
               <div className="min-w-0">
-                <span className="text-xs font-bold text-[#1A1714] block truncate">Tested Quality</span>
-                <span className="text-[11px] text-[#786E65] font-light block truncate">
+                <span className="text-xs font-bold text-slate-900 block truncate">Tested Quality</span>
+                <span className="text-[11px] text-slate-500 font-normal block truncate">
                   Genuine merchandise inspected
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-[#E8E3DA] shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-[#F8F7F4] text-[#966B24] flex items-center justify-center shrink-0 border border-[#EBE6DC]">
-                <CreditCard className="w-5 h-5 text-[#966B24]" />
+            <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-200">
+                <CreditCard className="w-5 h-5 text-blue-600" />
               </div>
               <div className="min-w-0">
-                <span className="text-xs font-bold text-[#1A1714] block truncate">Flexible Payment</span>
-                <span className="text-[11px] text-[#786E65] font-light block truncate">
+                <span className="text-xs font-bold text-slate-900 block truncate">Flexible Payment</span>
+                <span className="text-[11px] text-slate-500 font-normal block truncate">
                   Cash, Transfer &amp; POS
                 </span>
               </div>
@@ -113,16 +112,16 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-10">
         {/* VIP Stock Alerts & Newsletter Strip */}
-        <div className="pb-12 mb-12 border-b border-[#E8E3DA] grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+        <div className="pb-12 mb-12 border-b border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center bg-blue-50/60 p-6 sm:p-8 rounded-3xl border border-blue-100">
           <div className="lg:col-span-6 space-y-2 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E3DA] text-[#966B24] text-[10px] font-bold uppercase tracking-widest shadow-xs">
-              <Bell className="w-3 h-3 text-[#966B24]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-700 text-[10px] font-bold uppercase tracking-widest">
+              <Bell className="w-3 h-3 text-blue-700" />
               <span>Direct Stock Alerts</span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1714] tracking-tight">
+            <h3 className="font-serif text-2xl sm:text-3xl font-normal text-slate-900 tracking-tight">
               Get notified when new containers and showroom pieces arrive.
             </h3>
-            <p className="text-xs sm:text-sm text-[#786E65] font-light max-w-lg">
+            <p className="text-xs sm:text-sm text-slate-600 font-normal max-w-lg">
               Receive live video previews, price lists, and exclusive Dopemu showroom offers directly on WhatsApp.
             </p>
           </div>
@@ -135,14 +134,14 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                 value={newsletterInput}
                 onChange={(e) => setNewsletterInput(e.target.value)}
                 placeholder="Enter your phone or WhatsApp number"
-                className="flex-1 px-4 sm:px-5 py-3 rounded-full bg-white border border-[#E8E3DA] text-xs sm:text-sm text-[#1A1714] placeholder-[#857A6F] focus:outline-hidden focus:border-[#966B24] transition-all shadow-xs"
+                className="flex-1 px-4 sm:px-5 py-3 rounded-full bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-hidden focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all shadow-xs"
               />
               <button
                 type="submit"
-                className={`px-6 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-xs active:scale-95 ${
+                className={`px-6 py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-sm active:scale-98 ${
                   subscribed
-                    ? 'bg-[#059669] text-white'
-                    : 'bg-[#1A1714] text-white hover:bg-[#2E2822]'
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-500/20'
                 }`}
               >
                 {subscribed ? (
@@ -161,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
           </div>
         </div>
 
-        {/* Main Footer Navigation Grid (4 Balanced Columns) */}
+        {/* Main Footer Navigation Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8 text-left pb-12">
           {/* Column 1: Brand & Identity (4 Cols) */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-4">
@@ -170,22 +169,22 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                 src="/images/Screenshot_20261015-234655.jpg"
                 alt="Sunrise Legacy Interior"
                 referrerPolicy="no-referrer"
-                className="w-12 h-12 rounded-full object-cover ring-2 ring-[#966B24]/30 shadow-xs shrink-0"
+                className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500/30 shadow-xs shrink-0"
                 onError={(e) => {
                   e.currentTarget.src = '/images/logo.png';
                 }}
               />
               <div>
-                <span className="font-serif text-2xl font-semibold tracking-tight text-[#1A1714] block leading-none">
+                <span className="font-serif text-2xl font-semibold tracking-tight text-slate-900 block leading-none">
                   Sunrise Legacy
                 </span>
-                <span className="text-[11px] font-bold tracking-widest text-[#966B24] uppercase leading-none block mt-1">
+                <span className="text-[11px] font-bold tracking-widest text-blue-600 uppercase leading-none block mt-1">
                   Interior &amp; General Merchandise
                 </span>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#574F46] font-light leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed max-w-sm">
               Your preferred shop for household items, blenders, electric kettles, rechargeable fans,
               luxury crystal chandeliers, cooking pots, cutlery sets, canvas shoes, crocs, and Arabic
               perfumes at Greater Path Mall, Dopemu, Lagos.
@@ -199,7 +198,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#25D366]/15 text-[#13612D] hover:text-white hover:bg-[#25D366] border border-[#25D366]/40 hover:border-[#25D366] text-xs font-bold tracking-wide transition-all shadow-xs cursor-pointer active:scale-95"
+                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-emerald-50 text-emerald-700 hover:text-white hover:bg-emerald-600 border border-emerald-200 hover:border-emerald-600 text-xs font-bold tracking-wide transition-all shadow-xs cursor-pointer active:scale-98"
               >
                 <svg
                   className="w-4 h-4 fill-current shrink-0"
@@ -216,78 +215,78 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
 
           {/* Column 2: Merchandise Collections (3 Cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-[#966B24]">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-blue-700">
               Shop Collections
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#574F46]">
+            <ul className="space-y-2.5 text-xs text-slate-600">
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Appliances & Gadgets')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Blenders, Kettles &amp; Fans</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Lighting & Fans')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Chandeliers &amp; POP Lights</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Kitchen & Dining')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Cooking Pots &amp; Cutlery Sets</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Clothing & Footwear')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Canvas Shoes, Crocs &amp; Polos</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Fragrances')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Arabic Perfumes &amp; Royal Oud</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Home Décor & Accents')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Folding Ladders &amp; Umbrellas</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => handleCategoryClick('Bedding & Bedrooms')}
-                  className="hover:text-[#966B24] transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
+                  className="hover:text-blue-700 transition-colors text-left cursor-pointer flex items-center justify-between w-full group"
                 >
                   <span>Luxury Bed Linen Duvet Sets</span>
-                  <span className="text-[10px] text-[#857A6F] group-hover:text-[#966B24]">&rarr;</span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-blue-600">&rarr;</span>
                 </button>
               </li>
             </ul>
@@ -295,10 +294,10 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
 
           {/* Column 3: Quick Navigation & Showroom (2 Cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-[#966B24]">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-blue-700">
               Quick Links
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#574F46]">
+            <ul className="space-y-2.5 text-xs text-slate-600">
               <li>
                 <a
                   href="#catalog"
@@ -306,7 +305,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                     e.preventDefault();
                     document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#966B24] transition-colors block"
+                  className="hover:text-blue-700 transition-colors block"
                 >
                   Store Catalogue
                 </a>
@@ -318,7 +317,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                     e.preventDefault();
                     document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#966B24] transition-colors block"
+                  className="hover:text-blue-700 transition-colors block"
                 >
                   Featured Collections
                 </a>
@@ -330,7 +329,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                     e.preventDefault();
                     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#966B24] transition-colors block"
+                  className="hover:text-blue-700 transition-colors block"
                 >
                   About Our Store
                 </a>
@@ -342,7 +341,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                     e.preventDefault();
                     document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#966B24] transition-colors block"
+                  className="hover:text-blue-700 transition-colors block"
                 >
                   Shopping Services
                 </a>
@@ -354,7 +353,7 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                     e.preventDefault();
                     document.getElementById('visit')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="hover:text-[#966B24] transition-colors block"
+                  className="hover:text-blue-700 transition-colors block"
                 >
                   Showroom Directions
                 </a>
@@ -364,28 +363,28 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
 
           {/* Column 4: Verified Showroom & Direct Contact (3 Cols) */}
           <div className="lg:col-span-3 space-y-3.5">
-            <h4 className="text-xs uppercase font-bold tracking-widest text-[#966B24]">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-blue-700">
               Showroom &amp; Contact
             </h4>
 
-            <div className="space-y-3 text-xs text-[#574F46]">
+            <div className="space-y-3 text-xs text-slate-600">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#966B24] shrink-0 mt-0.5" />
-                <span className="leading-relaxed text-[#1A1714] font-medium">
+                <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                <span className="leading-relaxed text-slate-900 font-medium">
                   {storeConfig.address}
                 </span>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#966B24] shrink-0" />
+                <Clock className="w-4 h-4 text-blue-600 shrink-0" />
                 <span>{storeConfig.hours}</span>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#966B24] shrink-0" />
+                <Phone className="w-4 h-4 text-blue-600 shrink-0" />
                 <a
                   href={`tel:${storeConfig.phone.replace(/[^0-9+]/g, '')}`}
-                  className="hover:text-[#966B24] transition-colors text-[#1A1714] font-semibold"
+                  className="hover:text-blue-700 transition-colors text-slate-900 font-semibold"
                 >
                   {storeConfig.phone}
                 </a>
@@ -406,17 +405,17 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#13612D] transition-colors text-[#1A1714] font-semibold"
+                  className="hover:text-emerald-700 transition-colors text-slate-900 font-semibold"
                 >
                   WhatsApp: {storeConfig.whatsappDisplay}
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#966B24] shrink-0" />
+                <Mail className="w-4 h-4 text-blue-600 shrink-0" />
                 <a
                   href={`mailto:${storeConfig.email}`}
-                  className="hover:text-[#966B24] transition-colors truncate"
+                  className="hover:text-blue-700 transition-colors truncate"
                 >
                   {storeConfig.email}
                 </a>
@@ -426,11 +425,11 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
         </div>
 
         {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 border-t border-[#E8E3DA] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#786E65]">
+        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <p>&copy; {currentYear} Sunrise Legacy Interior. All rights reserved.</p>
-            <span className="hidden sm:inline text-[#DCD6CA]">|</span>
-            <p className="text-[11px] text-[#857A6F]">
+            <span className="hidden sm:inline text-slate-300">|</span>
+            <p className="text-[11px] text-slate-400">
               Greater Path Mall, Dopemu, Lagos &middot; General Merchandise
             </p>
           </div>
@@ -438,11 +437,11 @@ export const Footer: React.FC<FooterProps> = ({ storeConfig, onSelectCategory })
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white hover:bg-[#FAF9F6] border border-[#E8E3DA] hover:border-[#966B24] text-[#1A1714] hover:text-[#966B24] transition-all cursor-pointer text-xs font-medium shadow-xs"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-700 hover:text-blue-700 transition-all cursor-pointer text-xs font-semibold shadow-xs"
             aria-label="Back to top of page"
           >
             <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5 text-[#966B24]" />
+            <ArrowUp className="w-3.5 h-3.5 text-blue-600" />
           </button>
         </div>
       </div>
