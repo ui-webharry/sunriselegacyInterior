@@ -606,7 +606,7 @@ export const PRODUCTS: Product[] = [
     category: 'Footwear',
     price: 14500,
     originalPrice: 18000,
-    image: 'images/cat_footwear.jpg',
+    image: 'images/cat_footwear_poster.jpg',
     secondaryImage: 'images/photo-3.jpg',
     badge: 'Canvass Shoes',
     shortDesc: 'Durable 14oz cotton canvas casual lace-up sneakers with vulcanized non-slip gum sole.',
@@ -886,7 +886,8 @@ export const CATEGORIES_METADATA: CategoryMetadataItem[] = [
     title: 'Shoes & Footwear',
     category: 'Footwear',
     count: 'Canvas Sneakers, Crocs & Slippers',
-    image: 'images/cat_footwear.jpg',
+    image: 'images/cat_footwear_poster.jpg',
+    video: '/assets/aistudio/footwear_showcase_video.mp4',
     description: 'Casual canvas sneakers, lightweight slip-on crocs clogs, sliders, and comfortable daily footwear.',
   },
   {

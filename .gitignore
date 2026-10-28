@@ -9,3 +9,4 @@ coverage/
 .dev.pid
 *.pid
 .aistudio/
+*.MOV
