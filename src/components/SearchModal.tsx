@@ -15,7 +15,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onClose,
   products,
   onSelectProduct,
-  onSelectCategory: _onSelectCategory,
 }) => {
   const [query, setQuery] = useState('');
 
@@ -31,7 +30,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     };
   }, [isOpen]);
 
-  // Handle ESC
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) onClose();
@@ -48,6 +46,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         p.name.toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q) ||
         p.shortDesc.toLowerCase().includes(q) ||
+        (p.badge && p.badge.toLowerCase().includes(q)) ||
         (p.materials && p.materials.toLowerCase().includes(q))
     );
   }, [products, query]);
@@ -56,20 +55,33 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   const popularSearches = [
     'Blender',
-    'Chandelier',
-    'Ceiling Fan',
-    'Cooking Pots',
-    'Rechargeable Fan',
+    'Portable Juicer',
     'Electric Kettle',
+    'Microwave',
+    'Rechargeable Fan',
+    'Bluetooth Speaker',
+    'Headphones',
+    'Fast-Charging Cable',
+    'POP Light',
+    'Chandelier',
+    'Solar Light',
+    'Ladders',
+    'Polo Shirt',
+    'T-Shirt',
+    'Jeans',
+    'Canvas Sneakers',
+    "Children's Shoes",
     'Crocs',
     'Arabic Perfumes',
-    'Ladders',
-    'Solar Light',
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search store catalogue"
+    >
       <div
         className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
@@ -77,23 +89,23 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       />
 
       <div className="min-h-full flex items-start justify-center p-4 sm:p-6 pt-16 sm:pt-24">
-        <div className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 z-10 animate-in fade-in zoom-in-95 duration-200 text-slate-900">
-          {/* Search Header Input */}
-          <div className="p-4 sm:p-5 border-b border-slate-200 flex items-center gap-3 bg-slate-50">
-            <Search className="w-5 h-5 text-blue-600 shrink-0" />
+        <div className="relative w-full max-w-2xl bg-white rounded-xl overflow-hidden shadow-2xl border border-slate-200 z-10 text-[#0F172A]">
+          <div className="p-4 sm:p-5 border-b border-slate-200 flex items-center gap-3 bg-[#F8F9FA]">
+            <Search className="w-5 h-5 text-blue-700 shrink-0" />
             <input
               type="text"
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search cookware, blenders, fans, bed linen, fabrics..."
-              className="flex-1 bg-transparent border-0 text-sm sm:text-base text-slate-900 placeholder-slate-400 focus:outline-hidden"
+              placeholder="Search blenders, speakers, chandeliers, polo shirts, crocs, perfumes..."
+              className="flex-1 bg-transparent border-0 text-sm sm:text-base text-[#0F172A] placeholder-slate-400 focus:outline-hidden"
             />
             {query ? (
               <button
                 type="button"
                 onClick={() => setQuery('')}
-                className="p-1 text-slate-400 hover:text-slate-700 cursor-pointer"
+                className="p-1.5 text-slate-400 hover:text-slate-700 cursor-pointer"
+                aria-label="Clear search query"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -101,26 +113,26 @@ export const SearchModal: React.FC<SearchModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="text-xs font-semibold text-slate-500 hover:text-blue-700 px-2 py-1 rounded-md bg-white border border-slate-200 cursor-pointer shadow-xs"
+                className="text-xs font-semibold text-slate-500 hover:text-blue-700 px-2.5 py-1 rounded-md bg-white border border-slate-200 cursor-pointer"
               >
                 ESC
               </button>
             )}
           </div>
 
-          {/* Body Content */}
           <div className="p-5 max-h-[60vh] overflow-y-auto bg-white">
             {!query.trim() ? (
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
-                  Popular Searches
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 mb-3">
+                  Store Inventory Keywords
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {popularSearches.map((term) => (
                     <button
                       key={term}
+                      type="button"
                       onClick={() => setQuery(term)}
-                      className="px-3.5 py-1.5 rounded-full text-xs bg-slate-50 border border-slate-200 text-slate-700 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 transition-all cursor-pointer shadow-xs"
+                      className="px-3 py-1.5 rounded-lg text-xs bg-[#F8F9FA] border border-slate-200 text-slate-700 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 transition-colors cursor-pointer"
                     >
                       {term}
                     </button>
@@ -129,14 +141,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({
               </div>
             ) : searchResults.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="font-serif text-xl text-slate-900 mb-1">No products found for &ldquo;{query}&rdquo;</p>
-                <p className="text-xs text-slate-500 font-normal">
-                  Try searching for general keywords like &lsquo;blender&rsquo;, &lsquo;pot&rsquo;, &lsquo;fan&rsquo;, or &lsquo;bedding&rsquo;.
+                <p className="font-serif text-2xl text-[#0F172A] mb-1">
+                  No products found for &ldquo;{query}&rdquo;
+                </p>
+                <p className="text-xs text-slate-500">
+                  Try searching for keywords like blender, speaker, chandelier, polo, jeans, crocs, or perfume.
                 </p>
               </div>
             ) : (
-              <div className="space-y-2.5">
-                <p className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
+              <div className="space-y-2">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 mb-2.5">
                   Results ({searchResults.length})
                 </p>
                 {searchResults.map((product) => (
@@ -146,26 +160,27 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       onSelectProduct(product);
                       onClose();
                     }}
-                    className="flex items-center gap-3.5 p-2.5 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-xs transition-all cursor-pointer group"
+                    className="flex items-center gap-3.5 p-2.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 transition-colors cursor-pointer group"
                   >
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-14 h-14 rounded-xl object-cover bg-slate-100 shrink-0 border border-slate-100"
+                      referrerPolicy="no-referrer"
+                      className="w-14 h-14 rounded-lg object-cover bg-slate-100 shrink-0 border border-slate-100"
                     />
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-serif text-base text-slate-900 group-hover:text-blue-700 transition-colors truncate font-medium">
+                      <h4 className="font-serif text-base text-[#0F172A] group-hover:text-blue-700 transition-colors truncate font-medium">
                         {product.name}
                       </h4>
                       <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <span className="text-blue-600 font-semibold">{product.category}</span>
-                        <span>&middot;</span>
-                        <span className="font-semibold text-slate-900 tabular-nums">
+                        <span className="text-blue-700 font-medium">{product.category}</span>
+                        <span aria-hidden="true">&middot;</span>
+                        <span className="font-semibold text-[#0F172A] tabular-nums">
                           ₦{product.price.toLocaleString()}
                         </span>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all mr-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-700 group-hover:translate-x-1 transition-all mr-2 shrink-0" />
                   </div>
                 ))}
               </div>

@@ -1,15 +1,10 @@
 export type ProductCategory =
   | 'All'
-  | 'Kitchen & Dining'
-  | 'Bedding & Bedrooms'
-  | 'Home Décor & Accents'
-  | 'Lighting & Fans'
-  | 'Home Textiles & Rugs'
-  | 'Fabrics & Materials'
+  | 'Home Appliances'
+  | 'Electronics & Accessories'
+  | 'Lighting & Home Improvement'
   | 'Clothing'
   | 'Footwear'
-  | 'Clothing & Footwear'
-  | 'Appliances & Gadgets'
   | 'Fragrances';
 
 export type SortOption = 'featured' | 'newest' | 'price-asc' | 'price-desc';
@@ -24,7 +19,6 @@ export interface Product {
   name: string;
   category: ProductCategory;
   price: number;
-  originalPrice?: number;
   image: string;
   secondaryImage?: string;
   badge?: string;
@@ -36,10 +30,8 @@ export interface Product {
   care?: string;
   colors?: ProductColor[];
   sizes?: string[];
-  unit?: string; // e.g. "per meter", "per pair", "set"
+  unit?: string;
   inStock: boolean;
-  rating: number;
-  reviewsCount: number;
   isFeatured?: boolean;
   isNewArrival?: boolean;
   isBestseller?: boolean;
@@ -75,8 +67,15 @@ export interface StoreConfig {
   freeShippingThreshold: number;
   mapEmbedUrl: string;
   social: {
-    instagram: string;
     facebook: string;
+    whatsapp: string;
+    instagram: string;
+    tiktok: string;
+  };
+  socialHandles: {
+    facebook: string;
+    whatsapp: string;
+    instagram: string;
     tiktok: string;
   };
 }

@@ -47,7 +47,6 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // Sync cart to localStorage
   useEffect(() => {
     try {
       localStorage.setItem('sunrise_legacy_cart', JSON.stringify(cart));
@@ -56,7 +55,6 @@ export default function App() {
     }
   }, [cart]);
 
-  // Sync wishlist to localStorage
   useEffect(() => {
     try {
       localStorage.setItem('sunrise_legacy_wishlist', JSON.stringify(wishlist));
@@ -65,7 +63,6 @@ export default function App() {
     }
   }, [wishlist]);
 
-  // Cart Handlers
   const handleAddToCart = (
     product: Product,
     quantity = 1,
@@ -117,7 +114,6 @@ export default function App() {
     setCart([]);
   };
 
-  // Wishlist Handlers
   const handleToggleWishlist = (productId: string) => {
     setWishlist((prev) =>
       prev.includes(productId) ? prev.filter((id) => id !== productId) : [...prev, productId]
@@ -146,10 +142,10 @@ export default function App() {
   };
 
   return (
-    <div className="liquid-canvas min-h-screen flex flex-col bg-[#F8F9FA] text-[#0F172A]">
-      {/* Global Header */}
+    <div className="editorial-canvas min-h-screen flex flex-col bg-[#F8F9FA] text-[#0F172A]">
       <Header
         storeConfig={storeConfig}
+        selectedCategory={selectedCategory}
         cartCount={cartCount}
         cartTotal={cartTotal}
         wishlistCount={wishlist.length}
@@ -159,15 +155,21 @@ export default function App() {
         onSelectCategory={handleCategorySelect}
       />
 
-      {/* Main Page Sections */}
       <main className="flex-1">
-        {/* 1. Hero Section */}
-        <Hero storeConfig={storeConfig} onExploreClick={handleExploreHero} />
+        {/* Hero Split */}
+        <Hero
+          storeConfig={storeConfig}
+          onExploreClick={handleExploreHero}
+          onSelectCategory={handleCategorySelect}
+        />
 
-        {/* 2. Visual Category Cards */}
+        {/* 01 · Store Departments */}
         <CategoryGrid onSelectCategory={handleCategorySelect} />
 
-        {/* 3. Product Catalog with Filters & Sort */}
+        {/* 02 & 03 · Apparel & Footwear Lookbook + Home & Lighting Spread */}
+        <EditorialShowcase onSelectCategory={handleCategorySelect} />
+
+        {/* 04 · Interactive Confirmed Catalogue */}
         <ProductCatalog
           products={products}
           storeConfig={storeConfig}
@@ -179,26 +181,20 @@ export default function App() {
           onQuickView={(p) => setSelectedProduct(p)}
         />
 
-        {/* 4. Home Inspiration / Editorial Storytelling */}
-        <EditorialShowcase onSelectCategory={handleCategorySelect} />
-
-        {/* 5. Our Story & Craft Heritage */}
+        {/* 05 · Our Story */}
         <OurStorySection />
 
-        {/* 6. Bespoke Services & Shopping Options */}
+        {/* 06 · Shopping & Wholesale Services */}
         <ServicesSection storeConfig={storeConfig} />
 
-        {/* 7. Showroom Location & Contact */}
+        {/* 07 · Dopemu Showroom Location & Direct Enquiry */}
         <VisitSection storeConfig={storeConfig} />
       </main>
 
-      {/* Footer */}
       <Footer storeConfig={storeConfig} onSelectCategory={handleCategorySelect} />
 
-      {/* Floating Action */}
       <FloatingWhatsApp storeConfig={storeConfig} />
 
-      {/* Modals & Slide-Out Drawers */}
       <ProductModal
         product={selectedProduct}
         storeConfig={storeConfig}

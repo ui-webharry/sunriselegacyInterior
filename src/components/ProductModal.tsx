@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Heart, Shield, Truck, ChevronDown } from 'lucide-react';
+import { X, Heart, Shield, Truck, ChevronDown, ShoppingBag, Check } from 'lucide-react';
 import { Product, StoreConfig } from '../types';
 
 interface ProductModalProps {
@@ -19,30 +19,27 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   onClose,
   isWishlisted,
   onToggleWishlist,
-  onAddToCart: _onAddToCart,
+  onAddToCart,
 }) => {
-  if (!isOpen || !product) return null;
-
-  const [activeImage, setActiveImage] = useState<string>(product.image);
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(
-    product.colors && product.colors.length > 0 ? product.colors[0].name : undefined
-  );
-  const [selectedSize, setSelectedSize] = useState<string | undefined>(
-    product.sizes && product.sizes.length > 0 ? product.sizes[0] : undefined
-  );
+  const [activeImage, setActiveImage] = useState<string>('');
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+  const [selectedSize, setSelectedSize] = useState<string | undefined>(undefined);
   const [quantity, setQuantity] = useState<number>(1);
+  const [addedToBag, setAddedToBag] = useState<boolean>(false);
   const [openSection, setOpenSection] = useState<'materials' | 'dimensions' | 'care' | 'delivery' | null>('materials');
 
-  // Sync state when product changes
   useEffect(() => {
-    setActiveImage(product.image);
-    setSelectedColor(product.colors && product.colors.length > 0 ? product.colors[0].name : undefined);
-    setSelectedSize(product.sizes && product.sizes.length > 0 ? product.sizes[0] : undefined);
-    setQuantity(1);
+    if (product) {
+      setActiveImage(product.image);
+      setSelectedColor(product.colors && product.colors.length > 0 ? product.colors[0].name : undefined);
+      setSelectedSize(product.sizes && product.sizes.length > 0 ? product.sizes[0] : undefined);
+      setQuantity(1);
+      setAddedToBag(false);
+    }
   }, [product]);
 
-  // Lock body scroll
   useEffect(() => {
+    if (!isOpen) return;
     document.body.style.overflow = 'hidden';
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -52,13 +49,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [isOpen, onClose]);
+
+  if (!isOpen || !product) return null;
 
   const handleWhatsAppOrder = () => {
     const details = [
       `*Product:* ${product.name}`,
       `*Category:* ${product.category}`,
-      `*Reference Price:* ₦${product.price.toLocaleString()}${product.unit ? ` (${product.unit})` : ''}`,
+      `*Listed Price:* ₦${product.price.toLocaleString()}${product.unit ? ` (${product.unit})` : ''}`,
       quantity > 1 ? `*Desired Quantity:* ${quantity}` : null,
       selectedColor ? `*Color:* ${selectedColor}` : null,
       selectedSize ? `*Size/Option:* ${selectedSize}` : null,
@@ -66,19 +65,28 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       .filter(Boolean)
       .join('\n');
 
-    const message = `Hello Sunrise Legacy Interior, I am interested in ordering:\n\n${details}\n\nI want to buy this in bulk or in pieces. Please let me know the availability and wholesale/retail pricing.`;
+    const message = `Hello Sunrise Legacy Interior, I am interested in ordering:\n\n${details}\n\nPlease confirm availability and single-piece or wholesale pricing.`;
     window.open(`https://wa.me/${storeConfig.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  // Image gallery items
+  const handleBagAction = () => {
+    onAddToCart(product, quantity, selectedColor, selectedSize);
+    setAddedToBag(true);
+    setTimeout(() => setAddedToBag(false), 1800);
+  };
+
   const galleryImages = [
     product.image,
     ...(product.secondaryImage ? [product.secondaryImage] : []),
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-label={product.name}
+    >
       <div
         className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
@@ -86,41 +94,33 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       />
 
       <div className="min-h-full flex items-center justify-center p-4 sm:p-6 lg:p-8">
-        <div className="relative w-full max-w-4xl bg-white rounded-3xl sm:rounded-[32px] overflow-hidden shadow-2xl border border-slate-200 z-10 animate-in fade-in zoom-in-95 duration-200">
-          {/* Close button */}
+        <div className="relative w-full max-w-4xl bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-200 z-10">
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 flex items-center justify-center transition-colors shadow-xs border border-slate-200 cursor-pointer"
+            className="absolute top-4 right-4 z-20 w-10 h-10 rounded-lg bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-700 flex items-center justify-center transition-colors border border-slate-200 cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* Left: Product Media Gallery */}
-            <div className="p-6 sm:p-8 bg-slate-50 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-200">
-              {/* Main Image Showcase */}
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-white mb-4 border border-slate-200 shadow-xs">
+            {/* Left Media Gallery */}
+            <div className="p-6 sm:p-8 bg-[#F8F9FA] flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-200">
+              <div className="relative aspect-square rounded-xl overflow-hidden bg-white mb-4 border border-slate-200">
                 <img
-                  src={activeImage}
+                  src={activeImage || product.image}
                   alt={product.name}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-center"
                 />
                 {product.badge && (
-                  <span
-                    className={`absolute top-3 left-3 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-xs ${
-                      product.badge.toLowerCase().includes('sale')
-                        ? 'bg-rose-600 text-white'
-                        : 'bg-slate-900 text-white'
-                    }`}
-                  >
+                  <span className="absolute top-3 left-3 bg-white/95 border border-slate-200 text-[#0F172A] text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-sm">
                     {product.badge}
                   </span>
                 )}
               </div>
 
-              {/* Thumbnails if multiple images exist */}
               {galleryImages.length > 1 && (
                 <div className="flex items-center gap-3">
                   {galleryImages.map((img, idx) => (
@@ -128,64 +128,55 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                       key={idx}
                       type="button"
                       onClick={() => setActiveImage(img)}
-                      className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
-                        activeImage === img ? 'border-blue-600 scale-105 shadow-xs' : 'border-slate-200 opacity-60 hover:opacity-100'
+                      className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                        activeImage === img ? 'border-blue-700' : 'border-slate-200 opacity-65 hover:opacity-100'
                       }`}
                     >
-                      <img src={img} alt="" className="w-full h-full object-cover" />
+                      <img src={img} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>
               )}
 
-              {/* Trust markers */}
               <div className="mt-6 pt-4 border-t border-slate-200 grid grid-cols-2 gap-3 text-xs text-slate-600">
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-blue-600 shrink-0" />
-                  <span>Quality Assured</span>
+                  <Shield className="w-4 h-4 text-blue-700 shrink-0" />
+                  <span>Inspected Stock</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-blue-600 shrink-0" />
+                  <Truck className="w-4 h-4 text-blue-700 shrink-0" />
                   <span>Nationwide Dispatch</span>
                 </div>
               </div>
             </div>
 
-            {/* Right: Product Purchase Module */}
-            <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto bg-white text-slate-900">
-              {/* Category & Title */}
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-1">
+            {/* Right Purchase Module */}
+            <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto bg-white text-[#0F172A]">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 mb-1.5">
                 {product.category}
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl text-slate-900 font-normal leading-tight mb-2">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#0F172A] font-normal leading-tight mb-3">
                 {product.name}
               </h2>
 
-              {/* Price & Rating */}
-              <div className="flex items-baseline gap-3 mb-4">
-                <span className="font-sans font-bold text-2xl text-slate-900 tabular-nums">
+              <div className="flex items-baseline gap-2.5 mb-4">
+                <span className="font-sans font-semibold text-2xl text-[#0F172A] tabular-nums">
                   ₦{product.price.toLocaleString()}
                 </span>
-                {product.originalPrice && (
-                  <span className="text-sm text-slate-400 line-through tabular-nums font-normal">
-                    ₦{product.originalPrice.toLocaleString()}
-                  </span>
-                )}
                 {product.unit && (
-                  <span className="text-xs text-slate-500 font-normal">({product.unit})</span>
+                  <span className="text-xs text-slate-500">({product.unit})</span>
                 )}
               </div>
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
                 {product.description}
               </p>
 
-              {/* Color Swatch Selector */}
+              {/* Color Swatches */}
               {product.colors && product.colors.length > 0 && (
                 <div className="mb-5">
                   <label className="block text-xs font-semibold text-slate-700 mb-2">
-                    Color: <span className="font-bold text-blue-600">{selectedColor}</span>
+                    Color: <span className="text-blue-700">{selectedColor}</span>
                   </label>
                   <div className="flex items-center gap-2.5">
                     {product.colors.map((c) => (
@@ -194,7 +185,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                         type="button"
                         onClick={() => setSelectedColor(c.name)}
                         className={`w-7 h-7 rounded-full border-2 transition-all p-0.5 cursor-pointer ${
-                          selectedColor === c.name ? 'border-blue-600 scale-110 shadow-xs' : 'border-slate-300'
+                          selectedColor === c.name ? 'border-blue-700 scale-110' : 'border-slate-300'
                         }`}
                         title={c.name}
                         aria-label={c.name}
@@ -209,11 +200,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
               )}
 
-              {/* Size / Length Selector */}
+              {/* Size Selector */}
               {product.sizes && product.sizes.length > 0 && (
                 <div className="mb-5">
                   <label className="block text-xs font-semibold text-slate-700 mb-2">
-                    {product.unit?.includes('meter') ? 'Selected Meterage' : 'Size / Dimension'}:
+                    Available Size / Option:
                   </label>
                   <div className="flex flex-wrap gap-2">
                     {product.sizes.map((s) => (
@@ -221,10 +212,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                         key={s}
                         type="button"
                         onClick={() => setSelectedSize(s)}
-                        className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                        className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
                           selectedSize === s
-                            ? 'bg-blue-600 text-white font-bold shadow-xs'
-                            : 'bg-slate-100 border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-700'
+                            ? 'bg-blue-700 text-white font-semibold'
+                            : 'bg-[#F8F9FA] border border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-700'
                         }`}
                       >
                         {s}
@@ -234,13 +225,13 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 </div>
               )}
 
-              {/* Quantity Stepper & Stock status */}
+              {/* Quantity & Showroom Note */}
               <div className="mb-6 flex items-center justify-between gap-4">
-                <div className="flex items-center border border-slate-200 rounded-full bg-slate-50 px-2 py-1">
+                <div className="flex items-center border border-slate-200 rounded-lg bg-[#F8F9FA] px-1.5 py-1">
                   <button
                     type="button"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-7 h-7 rounded-full text-base font-semibold text-slate-700 hover:text-blue-700 hover:bg-white flex items-center justify-center cursor-pointer transition-colors"
+                    className="w-8 h-8 rounded-md text-base font-semibold text-slate-700 hover:text-blue-700 hover:bg-white flex items-center justify-center cursor-pointer transition-colors"
                     aria-label="Decrease quantity"
                   >
                     -
@@ -251,51 +242,66 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   <button
                     type="button"
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-7 h-7 rounded-full text-base font-semibold text-slate-700 hover:text-blue-700 hover:bg-white flex items-center justify-center cursor-pointer transition-colors"
+                    className="w-8 h-8 rounded-md text-base font-semibold text-slate-700 hover:text-blue-700 hover:bg-white flex items-center justify-center cursor-pointer transition-colors"
                     aria-label="Increase quantity"
                   >
                     +
                   </button>
                 </div>
 
-                <div className="text-xs text-emerald-600 font-medium flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-xs" />
-                  <span>In Stock &middot; Ready to dispatch</span>
-                </div>
+                <span className="text-xs text-slate-500 font-medium">
+                  Retail &amp; Wholesale Enquiry
+                </span>
               </div>
 
-              {/* Action Buttons: Direct WhatsApp Buy (Bulk / Pieces) */}
-              <div className="flex items-center gap-2.5 mb-6">
+              {/* Action Buttons */}
+              <div className="space-y-2.5 mb-6">
+                <div className="flex items-center gap-2.5">
+                  <button
+                    type="button"
+                    onClick={handleBagAction}
+                    className={`flex-1 py-3 px-5 rounded-lg font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer ${
+                      addedToBag
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-blue-700 hover:bg-blue-800 text-white'
+                    }`}
+                  >
+                    {addedToBag ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        <span>Added to Bag</span>
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingBag className="w-4 h-4" />
+                        <span>Add to Bag</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => onToggleWishlist(product.id)}
+                    className={`w-11 h-11 rounded-lg border border-slate-200 hover:border-blue-400 flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
+                      isWishlisted ? 'bg-blue-700 text-white border-blue-700' : 'bg-[#F8F9FA] text-slate-700 hover:text-blue-700'
+                    }`}
+                    aria-label={isWishlisted ? 'Saved to Wishlist' : 'Save to Wishlist'}
+                    title="Save to Wishlist"
+                  >
+                    <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-current' : ''}`} />
+                  </button>
+                </div>
+
                 <button
                   type="button"
                   onClick={handleWhatsAppOrder}
-                  className="flex-1 py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm flex items-center justify-center gap-2.5 transition-all shadow-sm cursor-pointer active:scale-98"
+                  className="w-full py-3 px-5 rounded-lg bg-[#F8F9FA] hover:bg-slate-900 text-[#0F172A] hover:text-white border border-slate-300 hover:border-slate-900 font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
-                  <svg
-                    className="w-5 h-5 fill-current shrink-0"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.24 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.16 12.04 20.16C10.66 20.16 9.3 19.8 8.1 19.09L7.81 18.92L4.7 19.74L5.53 16.71L5.34 16.41C4.55 15.16 4.13 13.71 4.13 11.91C4.13 7.37 7.83 3.67 12.04 3.67ZM8.73 7.34C8.54 7.34 8.24 7.41 7.99 7.68C7.74 7.95 7.03 8.62 7.03 9.98C7.03 11.34 8.02 12.65 8.16 12.84C8.3 13.03 10.11 15.82 12.87 17.02C13.53 17.31 14.04 17.48 14.44 17.61C15.11 17.82 15.72 17.79 16.2 17.72C16.74 17.64 17.86 17.04 18.09 16.39C18.32 15.74 18.32 15.19 18.25 15.07C18.18 14.95 17.99 14.88 17.71 14.74C17.43 14.6 16.07 13.93 15.81 13.84C15.56 13.75 15.37 13.7 15.18 13.98C14.99 14.25 14.46 14.88 14.3 15.07C14.14 15.25 13.98 15.28 13.7 15.14C13.42 15.0 12.52 14.71 11.46 13.76C10.63 13.02 10.07 12.11 9.91 11.83C9.75 11.55 9.89 11.4 10.03 11.26C10.16 11.14 10.31 10.94 10.45 10.78C10.59 10.62 10.64 10.5 10.73 10.32C10.82 10.14 10.78 9.98 10.71 9.84C10.64 9.7 10.08 8.33 9.85 7.78C9.62 7.24 9.39 7.32 9.22 7.31C9.06 7.3 8.87 7.34 8.73 7.34Z" />
-                  </svg>
-                  <span>Buy in Bulk or in Pieces</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onToggleWishlist(product.id)}
-                  className={`p-3.5 rounded-full border border-slate-200 hover:border-blue-400 flex items-center justify-center transition-all cursor-pointer ${
-                    isWishlisted ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:text-blue-600'
-                  }`}
-                  aria-label={isWishlisted ? 'Saved to Wishlist' : 'Save to Wishlist'}
-                  title="Save to Wishlist"
-                >
-                  <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-current' : ''}`} />
+                  <span>Confirm Stock &amp; Order via WhatsApp</span>
                 </button>
               </div>
 
-              {/* Collapsible Product Details Accordions */}
+              {/* Collapsible Specifications */}
               <div className="border-t border-slate-200 pt-4 space-y-2 text-xs">
                 {product.materials && (
                   <div className="border-b border-slate-100 pb-3">
@@ -304,15 +310,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                       onClick={() => setOpenSection(openSection === 'materials' ? null : 'materials')}
                       className="w-full flex items-center justify-between text-left font-semibold text-slate-900 py-1 cursor-pointer hover:text-blue-700 transition-colors"
                     >
-                      <span>Materials &amp; Craftsmanship</span>
+                      <span>Materials &amp; Build</span>
                       <ChevronDown
-                        className={`w-3.5 h-3.5 text-blue-600 transition-transform ${
+                        className={`w-3.5 h-3.5 text-blue-700 transition-transform ${
                           openSection === 'materials' ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {openSection === 'materials' && (
-                      <p className="mt-2 text-slate-600 leading-relaxed font-normal">{product.materials}</p>
+                      <p className="mt-2 text-slate-600 leading-relaxed">{product.materials}</p>
                     )}
                   </div>
                 )}
@@ -324,15 +330,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                       onClick={() => setOpenSection(openSection === 'dimensions' ? null : 'dimensions')}
                       className="w-full flex items-center justify-between text-left font-semibold text-slate-900 py-1 cursor-pointer hover:text-blue-700 transition-colors"
                     >
-                      <span>Specifications &amp; Dimensions</span>
+                      <span>Dimensions &amp; Sizing</span>
                       <ChevronDown
-                        className={`w-3.5 h-3.5 text-blue-600 transition-transform ${
+                        className={`w-3.5 h-3.5 text-blue-700 transition-transform ${
                           openSection === 'dimensions' ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {openSection === 'dimensions' && (
-                      <p className="mt-2 text-slate-600 leading-relaxed font-normal">{product.dimensions}</p>
+                      <p className="mt-2 text-slate-600 leading-relaxed tabular-nums">{product.dimensions}</p>
                     )}
                   </div>
                 )}
@@ -344,15 +350,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                       onClick={() => setOpenSection(openSection === 'care' ? null : 'care')}
                       className="w-full flex items-center justify-between text-left font-semibold text-slate-900 py-1 cursor-pointer hover:text-blue-700 transition-colors"
                     >
-                      <span>Care &amp; Maintenance</span>
+                      <span>Care &amp; Handling</span>
                       <ChevronDown
-                        className={`w-3.5 h-3.5 text-blue-600 transition-transform ${
+                        className={`w-3.5 h-3.5 text-blue-700 transition-transform ${
                           openSection === 'care' ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
                     {openSection === 'care' && (
-                      <p className="mt-2 text-slate-600 leading-relaxed font-normal">{product.care}</p>
+                      <p className="mt-2 text-slate-600 leading-relaxed">{product.care}</p>
                     )}
                   </div>
                 )}
@@ -363,18 +369,18 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                     onClick={() => setOpenSection(openSection === 'delivery' ? null : 'delivery')}
                     className="w-full flex items-center justify-between text-left font-semibold text-slate-900 py-1 cursor-pointer hover:text-blue-700 transition-colors"
                   >
-                    <span>Delivery &amp; Collection</span>
+                    <span>Delivery &amp; Showroom Pickup</span>
                     <ChevronDown
-                      className={`w-3.5 h-3.5 text-blue-600 transition-transform ${
+                      className={`w-3.5 h-3.5 text-blue-700 transition-transform ${
                         openSection === 'delivery' ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
                   {openSection === 'delivery' && (
-                    <div className="mt-2 text-slate-600 space-y-1 font-normal leading-relaxed">
+                    <div className="mt-2 text-slate-600 space-y-1 leading-relaxed">
                       <p>&bull; Lagos same-day or next-day courier delivery available.</p>
-                      <p>&bull; Nationwide delivery to all states via secure logistics.</p>
-                      <p>&bull; Complimentary in-store collection at our Dopemu showroom (Greater Path Mall).</p>
+                      <p>&bull; Nationwide dispatch across Nigerian states via verified logistics.</p>
+                      <p>&bull; Walk-in inspection &amp; pickup at Greater Path Mall, Dopemu (Shops 21 &amp; 22, Block B, 1st Floor).</p>
                     </div>
                   )}
                 </div>
